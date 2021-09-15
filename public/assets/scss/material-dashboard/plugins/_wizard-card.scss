@@ -49,7 +49,7 @@
         font-weight: 500;
     }
 
-    &[data-color="cobalt"]{
+    &[data-color="sky-blue"]{
         @include set-wizard-color($primary);
     }
 

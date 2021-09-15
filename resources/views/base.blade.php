@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="{{asset('/assets/img/favicon.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-      Material Dashboard PRO by SIDAKM
+      Material Dashboard PRO by KADIN
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -20,11 +20,10 @@
 
   <body class="">
     <div class="wrapper ">
-      <div class="sidebar" data-color="green" data-background-color="white" data-image="../../assets/img/sidebar-1.jpg">
+      <div class="sidebar" data-color="sky-blue" data-background-color="dark-blue" data-image="../../assets/img/sidebar-1.jpg">
         <div class="logo">
-          {{-- <a href="{{ route('dashboard') }}" class="simple-text logo-mini">M</a> --}}
           <a href="{{ route('dashboard') }}" class="simple-text logo-normal">
-            <img src="{{ asset('/assets/img/kmm-logo.png') }}" alt="" srcset="" height="64px">
+            <img src="{{ asset('/assets/img/kadin-logo.png') }}" alt="" srcset="" height="64px">
           </a>
         </div>
         <div class="sidebar-wrapper">
@@ -41,78 +40,6 @@
                 <p> Data Anggota </p>
               </a>
             </li>
-            {{-- <li class="nav-item ">
-              <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
-                <i class="material-icons">apps</i>
-                <p> Components
-                  <b class="caret"></b>
-                </p>
-              </a>
-              <div class="collapse" id="componentsExamples">
-                <ul class="nav">
-                  <li class="nav-item ">
-                    <a class="nav-link" data-toggle="collapse" href="#componentsCollapse">
-                      <span class="sidebar-mini"> MLT </span>
-                      <span class="sidebar-normal"> Multi Level Collapse
-                        <b class="caret"></b>
-                      </span>
-                    </a>
-                    <div class="collapse" id="componentsCollapse">
-                      <ul class="nav">
-                        <li class="nav-item ">
-                          <a class="nav-link" href="#0">
-                            <span class="sidebar-mini"> E </span>
-                            <span class="sidebar-normal"> Example </span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/buttons.html">
-                      <span class="sidebar-mini"> B </span>
-                      <span class="sidebar-normal"> Buttons </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/grid.html">
-                      <span class="sidebar-mini"> GS </span>
-                      <span class="sidebar-normal"> Grid System </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/panels.html">
-                      <span class="sidebar-mini"> P </span>
-                      <span class="sidebar-normal"> Panels </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/sweet-alert.html">
-                      <span class="sidebar-mini"> SA </span>
-                      <span class="sidebar-normal"> Sweet Alert </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/notifications.html">
-                      <span class="sidebar-mini"> N </span>
-                      <span class="sidebar-normal"> Notifications </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/icons.html">
-                      <span class="sidebar-mini"> I </span>
-                      <span class="sidebar-normal"> Icons </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/typography.html">
-                      <span class="sidebar-mini"> T </span>
-                      <span class="sidebar-normal"> Typography </span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li> --}}
           </ul>
         </div>
       </div>
@@ -136,15 +63,6 @@
               <span class="navbar-toggler-icon icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end">
-              {{-- <form class="navbar-form">
-                <div class="input-group no-border">
-                  <input type="text" value="" class="form-control" placeholder="Search...">
-                  <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                    <i class="material-icons">search</i>
-                    <div class="ripple-container"></div>
-                  </button>
-                </div>
-              </form> --}}
               <ul class="navbar-nav">
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('dashboard') }}">
@@ -154,22 +72,6 @@
                     </p>
                   </a>
                 </li>
-                {{-- <li class="nav-item dropdown">
-                  <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons">notifications</i>
-                    <span class="notification">5</span>
-                    <p class="d-lg-none d-md-block">
-                      Some Actions
-                    </p>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                    <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                    <a class="dropdown-item" href="#">Another Notification</a>
-                    <a class="dropdown-item" href="#">Another One</a>
-                  </div>
-                </li> --}}
                 <li class="nav-item dropdown">
                   <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">person</i>
@@ -200,7 +102,7 @@
               <ul>
                 <li>
                   <a href="{{ route('dashboard') }}">
-                    SIDAKM
+                    KADIN
                   </a>
                 </li>
               </ul>
@@ -210,113 +112,11 @@
               <script>
                 document.write(new Date().getFullYear())
               </script>, made with <i class="material-icons">favorite</i> by
-              <a href="{{ route('dashboard') }}" target="_blank">SIDAKM</a> for a better web.
+              <a href="{{ route('dashboard') }}" target="_blank">KADIN</a> for a better web.
             </div>
           </div>
         </footer>
         @include('confirmation-popup')
-      </div>
-    </div>
-    <div class="fixed-plugin">
-      <div class="dropdown show-dropdown">
-        <a href="#" data-toggle="dropdown">
-          <i class="fa fa-cog fa-2x"> </i>
-        </a>
-        <ul class="dropdown-menu">
-          <li class="header-title"> Sidebar Filters</li>
-          <li class="adjustments-line">
-            <a href="javascript:void(0)" class="switch-trigger active-color">
-              <div class="badge-colors ml-auto mr-auto">
-                <span class="badge filter badge-cobalt" data-color="cobalt"></span>
-                <span class="badge filter badge-moccaccino active" data-color="moccaccino"></span>
-                <span class="badge filter badge-green" data-color="green"></span>
-                <span class="badge filter badge-warning" data-color="brown"></span>
-                <span class="badge filter badge-danger" data-color="danger"></span>
-                <span class="badge filter badge-chenin" data-color="chenin"></span>
-              </div>
-              <div class="clearfix"></div>
-            </a>
-          </li>
-          <li class="header-title">Sidebar Background</li>
-          <li class="adjustments-line">
-            <a href="javascript:void(0)" class="switch-trigger background-color">
-              <div class="ml-auto mr-auto">
-                <span class="badge filter badge-black" data-background-color="black"></span>
-                <span class="badge filter badge-white active" data-background-color="white"></span>
-                <span class="badge filter badge-chenin" data-background-color="chenin"></span>
-              </div>
-              <div class="clearfix"></div>
-            </a>
-          </li>
-          <li class="adjustments-line">
-            <a href="javascript:void(0)" class="switch-trigger">
-              <p>Sidebar Mini</p>
-              <label class="ml-auto">
-                <div class="togglebutton switch-sidebar-mini">
-                  <label>
-                    <input type="checkbox">
-                    <span class="toggle"></span>
-                  </label>
-                </div>
-              </label>
-              <div class="clearfix"></div>
-            </a>
-          </li>
-          <li class="adjustments-line">
-            <a href="javascript:void(0)" class="switch-trigger">
-              <p>Sidebar Images</p>
-              <label class="switch-mini ml-auto">
-                <div class="togglebutton switch-sidebar-image">
-                  <label>
-                    <input type="checkbox" checked="">
-                    <span class="toggle"></span>
-                  </label>
-                </div>
-              </label>
-              <div class="clearfix"></div>
-            </a>
-          </li>
-          <li class="header-title">Images</li>
-          <li class="active">
-            <a class="img-holder switch-trigger" href="javascript:void(0)">
-              <img src="../../assets/img/sidebar-1.jpg" alt="">
-            </a>
-          </li>
-          <li>
-            <a class="img-holder switch-trigger" href="javascript:void(0)">
-              <img src="../../assets/img/sidebar-2.jpg" alt="">
-            </a>
-          </li>
-          <li>
-            <a class="img-holder switch-trigger" href="javascript:void(0)">
-              <img src="../../assets/img/sidebar-3.jpg" alt="">
-            </a>
-          </li>
-          <li>
-            <a class="img-holder switch-trigger" href="javascript:void(0)">
-              <img src="../../assets/img/sidebar-4.jpg" alt="">
-            </a>
-          </li>
-          <li class="button-container">
-            <a href=" product/material-dashboard-pro" target="_blank" class="btn btn-chenin btn-block btn-fill">Buy Now</a>
-            <a href="https://demos.creative-tim.com/material-dashboard-pro/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
-              Documentation
-            </a>
-            <a href=" product/material-dashboard" target="_blank" class="btn btn-info btn-block">
-              Get Free Demo!
-            </a>
-          </li>
-          <li class="button-container github-star">
-            <a class="github-button" href="https://github.com/creativetimofficial/ct-material-dashboard-pro" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-          </li>
-          <li class="header-title">Thank you for 95 shares!</li>
-          <li class="button-container text-center">
-            <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-            <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-            <br>
-            <br>
-          </li>
-        </ul>
       </div>
     </div>
     <!--   Core JS Files   -->

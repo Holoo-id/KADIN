@@ -363,7 +363,7 @@
         }
     }
 
-    &[data-background-color="chenin"]{
+    &[data-background-color="dark-blue"]{
         @include sidebar-background-color($danger, $white);
         background-color: $danger;
 
@@ -383,7 +383,7 @@
         }
     }
 
-    &[data-color="cobalt"]{
+    &[data-color="sky-blue"]{
         @include set-background-color-button($primary);
     }
     &[data-color="moccaccino"]{

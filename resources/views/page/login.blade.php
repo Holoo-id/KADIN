@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-      Material Dashboard PRO by SIDAKM
+      Material Dashboard PRO by KADIN
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -57,14 +57,14 @@
     </nav>
     <!-- End Navbar -->
     <div class="wrapper wrapper-full-page">
-      <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
+      <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('../../assets/img/3.jpg'); background-size: cover; background-position: top center;">
         <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
         <div class="container">
           <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
               <form class="form" method="" action="">
                 <div class="card card-login card-hidden">
-                  <div class="card-header card-header-info text-center">
+                  <div class="card-header card-header-primary text-center">
                     {{-- <h4 class="card-title">{{ $pageName }}</h4> --}}
                     {{-- <div class="social-line">
                       <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
@@ -77,7 +77,7 @@
                         <i class="fa fa-google-plus"></i>
                       </a>
                     </div> --}}
-                    <img src="{{ asset('/assets/img/kmm-logo.png') }}" alt="" srcset="">
+                    <img src="{{ asset('/assets/img/kadin-logo.png') }}" alt="" srcset="" width="128px">
                   </div>
                   <div class="card-body ">
                     {{-- <p class="card-description text-center">Or Be Classical</p> --}}
@@ -116,7 +116,7 @@
               <ul>
                 <li>
                   <a href="">
-                    SIDAKM
+                    KADIN
                   </a>
                 </li>
               </ul>
@@ -126,7 +126,7 @@
               <script>
                 document.write(new Date().getFullYear())
               </script>, made with <i class="material-icons">favorite</i> by
-              <a href=" " target="_blank">SIDAKM</a> for a better web.
+              <a href=" " target="_blank">KADIN</a> for a better web.
             </div>
           </div>
         </footer>

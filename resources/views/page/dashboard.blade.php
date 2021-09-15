@@ -4,8 +4,8 @@ Material Dashboard PRO - v2.1.2
 =========================================================
 
 Product Page:  product/material-dashboard-pro
-Copyright 2020 SIDAKM (https://www.creative-tim.com)
-Coded by SIDAKM
+Copyright 2020 KADIN (https://www.creative-tim.com)
+Coded by KADIN
 
 =========================================================
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
@@ -18,7 +18,7 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard PRO by SIDAKM
+    Material Dashboard PRO by KADIN
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -42,7 +42,7 @@ The above copyright notice and this permission notice shall be included in all c
           CT
         </a>
         <a href="" class="simple-text logo-normal">
-          SIDAKM
+          KADIN
         </a></div>
       <div class="sidebar-wrapper">
         <div class="user">
@@ -798,7 +798,7 @@ The above copyright notice and this permission notice shall be included in all c
             <ul>
               <li>
                 <a href=" ">
-                  SIDAKM
+                  KADIN
                 </a>
               </li>
               <li>
@@ -823,7 +823,7 @@ The above copyright notice and this permission notice shall be included in all c
             <script>
               document.write(new Date().getFullYear())
             </script>, made with <i class="material-icons">favorite</i> by
-            <a href=" " target="_blank">SIDAKM</a> for a better web.
+            <a href=" " target="_blank">KADIN</a> for a better web.
           </div>
         </div>
       </footer>
@@ -839,7 +839,7 @@ The above copyright notice and this permission notice shall be included in all c
         <li class="adjustments-line">
           <a href="javascript:void(0)" class="switch-trigger active-color">
             <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-cobalt" data-color="cobalt"></span>
+              <span class="badge filter badge-cobalt" data-color="sky-blue"></span>
               <span class="badge filter badge-moccaccino" data-color="moccaccino"></span>
               <span class="badge filter badge-green" data-color="green"></span>
               <span class="badge filter badge-warning" data-color="brown"></span>
@@ -855,7 +855,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="ml-auto mr-auto">
               <span class="badge filter badge-black active" data-background-color="black"></span>
               <span class="badge filter badge-white" data-background-color="white"></span>
-              <span class="badge filter badge-red" data-background-color="chenin"></span>
+              <span class="badge filter badge-red" data-background-color="dark-blue"></span>
             </div>
             <div class="clearfix"></div>
           </a>

@@ -5,7 +5,7 @@
  =========================================================
 
  * Product Page:  product/material-dashboard-pro
- * Copyright 2020 SIDAKM ()
+ * Copyright 2020 KADIN ()
 
  * Designed by www.invisionapp.com Coded by www.creative-tim.com
 
@@ -292,7 +292,7 @@ md = {
           tension: 0
         }),
         low: 0,
-        high: 50, // SIDAKM: we recommend you to set the high sa the biggest value + something for a better look
+        high: 50, // KADIN: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: {
           top: 0,
           right: 0,
@@ -417,7 +417,7 @@ md = {
           tension: 0
         }),
         low: 0,
-        high: 50, // SIDAKM: we recommend you to set the high sa the biggest value + something for a better look
+        high: 50, // KADIN: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: {
           top: 0,
           right: 0,
@@ -446,7 +446,7 @@ md = {
           tension: 0
         }),
         low: 0,
-        high: 1000, // SIDAKM: we recommend you to set the high sa the biggest value + something for a better look
+        high: 1000, // KADIN: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: {
           top: 0,
           right: 0,
@@ -750,7 +750,7 @@ md = {
           className: 'event-azure'
         },
         {
-          title: 'Click for SIDAKM',
+          title: 'Click for KADIN',
           start: new Date(y, m, 21),
           end: new Date(y, m, 22),
           url: '/',

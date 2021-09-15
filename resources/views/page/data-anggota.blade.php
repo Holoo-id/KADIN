@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header card-header-success card-header-icon">
+        <div class="card-header card-header-warning card-header-icon">
           <div class="card-icon">
             <i class="material-icons">assignment</i>
           </div>
@@ -11,6 +11,17 @@
         </div>
         <div class="card-body">
           <div class="toolbar">
+            <div class="row mt-3">
+              <div class="col">
+                <button class="btn bg-primary" data-toggle="modal" data-target="#tambahAnggotaModal">
+                  Tambah Anggota
+                </button>
+              </div>
+              <div class="col d-flex justify-content-end">
+                <a href="" class="btn btn-danger">Cetak Sebagai PDF</a>
+                <a href="" class="btn btn-success">Cetak Sebagai EXCEL</a>
+              </div>
+            </div>
             <!--        Here you can write extra buttons/actions for the toolbar              -->
           </div>
           <div class="material-datatables">
@@ -65,7 +76,7 @@
                     <td>Bakso UwU</td>
                     <td>10</td>
                     <td class="text-right">
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">mode_edit</i></a>
+                      <a href="#" class="btn btn-link btn-success btn-just-icon edit"><i class="material-icons">mode_edit</i></a>
                       <button class="btn btn-link btn-danger btn-just-icon remove" data-toggle="modal" data-target="#deletePopup">
                         <i class="material-icons">delete</i>
                       </button>
@@ -74,17 +85,6 @@
                 @endfor
               </tbody>
             </table>
-          </div>
-          <div class="row mt-3">
-            <div class="col">
-              <button class="btn bg-primary" data-toggle="modal" data-target="#tambahAnggotaModal">
-                Tambah Anggota
-              </button>
-            </div>
-            <div class="col d-flex justify-content-end">
-              <a href="" class="btn btn-danger">Cetak Sebagai PDF</a>
-              <a href="" class="btn btn-success">Cetak Sebagai EXCEL</a>
-            </div>
           </div>
         </div>
         <!-- end content-->
