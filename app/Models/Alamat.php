@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alamat extends Model
 {
     use HasFactory;
-    protected $table = 'tb_anggota';
+    protected $table = 'tb_detail_alamat';
     public function Anggota()
     {
         return $this->hasOne(Anggota::class, 'id_alamat');

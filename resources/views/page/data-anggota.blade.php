@@ -61,16 +61,16 @@
                 </tr>
               </tfoot>
               <tbody>
-                @for ($i = 0; $i < 55; $i++)
+                @foreach ($members as $member)
                   <tr>
-                    <td>Tiger Nixon</td>
-                    <td>1234567890987654</td>
-                    <td>081209871234</td>
-                    <td>61</td>
-                    <td>Jawa Barat</td>
-                    <td>Kota Cimahi</td>
-                    <td>Cimahi Selatan</td>
-                    <td>Cipageran</td>
+                    <td>{{ $member->Nama }}</td>
+                    <td>{{ $member->NIK }}</td>
+                    <td>{{ $member->no_HP }}</td>
+                    <td>{{ \Carbon\Carbon::now()->year - \Carbon\Carbon::parse($member->tgl_lahir)->format('Y') }}</td>
+                    <td>{{ $member->kategori->provinsi }}</td>
+                    <td>{{ $member->kategori->kabupaten_kota }}</td>
+                    <td>{{ $member->kategori->kecamatan }}</td>
+                    <td>{{ $member->kategori->kelurahan_desa }}</td>
                     <td>-6.8588318,107.4773953</td>
                     <td>Makanan</td>
                     <td>Bakso UwU</td>
@@ -82,7 +82,7 @@
                       </button>
                     </td>
                   </tr>
-                @endfor
+                @endforeach
               </tbody>
             </table>
           </div>
