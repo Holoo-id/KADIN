@@ -37,12 +37,14 @@ Route::middleware(['guest'])->group(function ()
 
 Route::middleware(['auth'])->group(function ()
 {
-    Route::get('/data-anggota', 'App\Http\Controllers\DataAnggotaController@index')->name('data-anggota');
+    Route::get('/data-anggota', 'App\Http\Controllers\DataAnggotaController@index')->name('dashboard');
     
     Route::get('/tambah-anggota', function () {
         $pageName = 'Tambah Anggota';
         return view('page.tambah-anggota', compact('pageName'));
     })->name('tambah-anggota');
+
+    Route::get('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
 });
 
 

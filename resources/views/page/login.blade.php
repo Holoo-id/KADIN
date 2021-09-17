@@ -83,7 +83,7 @@
                             <i class="material-icons">perm_identity</i>
                           </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" pattern="[0-9]{16}" name="name" id="name">
+                        <input type="text" class="form-control" placeholder="Username" name="name" id="name">
                       </div>
                     </span>
                     <span class="bmd-form-group">
@@ -98,7 +98,7 @@
                     </span>
                   </div>
                   <div class="card-footer justify-content-center">
-                    <a href="#pablo" type="submit" class="btn btn-success btn-link btn-lg">Login</a>
+                    <input type="submit" class="btn btn-success btn-link btn-lg" value="Login">
                   </div>
                 </div>
               </form>

@@ -22,7 +22,7 @@
                 <a href="" class="btn btn-success">Cetak Sebagai EXCEL</a>
               </div>
             </div>
-            <!--        Here you can write extra buttons/actions for the toolbar              -->
+            <!--        Here you can write extra buttons/actions for the toolbar-->
           </div>
           <div class="material-datatables">
             <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
@@ -71,10 +71,10 @@
                     <td>{{ $member->kategori->kabupaten_kota }}</td>
                     <td>{{ $member->kategori->kecamatan }}</td>
                     <td>{{ $member->kategori->kelurahan_desa }}</td>
-                    <td>-6.8588318,107.4773953</td>
-                    <td>Makanan</td>
-                    <td>Bakso UwU</td>
-                    <td>10</td>
+                    <td>{{ $member->kategori->lattitude }},{{ $member->kategori->longitude }}</td>
+                    <td>{{ $member->jenis_usaha }}</td>
+                    <td>{{ $member->produk }}</td>
+                    <td>{{ $member->jumlah_karyawan }}</td>
                     <td class="text-right">
                       <a href="#" class="btn btn-link btn-success btn-just-icon edit"><i class="material-icons">mode_edit</i></a>
                       <button class="btn btn-link btn-danger btn-just-icon remove" data-toggle="modal" data-target="#deletePopup">

@@ -112,7 +112,7 @@
                           </label>
                         </div>
                         <div class="text-center">
-                          <a href="" class="btn btn-success btn-round mt-4">Register</a>
+                          <input type="submit" class="btn btn-success btn-round mt-4" value="Register">
                         </div>
                       </form>
                     </div>

@@ -10,7 +10,7 @@
       </div>
       <div class="modal-footer justify-content-center">
         <button type="button" class="btn btn-link" data-dismiss="modal">Tidak Jadi</button>
-        <a href="{{ route('login') }}" type="button" class="btn btn-primary btn-link">Ya, Saya Yakin
+        <a href="{{ route('logout') }}" type="button" class="btn btn-primary btn-link">Ya, Saya Yakin
           <div class="ripple-container"></div>
         </a>
       </div>

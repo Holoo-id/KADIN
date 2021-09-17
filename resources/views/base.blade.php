@@ -29,7 +29,7 @@
         <div class="sidebar-wrapper">
           <ul class="nav">
             <li class="nav-item active">
-              <a class="nav-link" href="{{ route('data-anggota') }}">
+              <a class="nav-link" href="{{ route('dashboard') }}">
                 <i class="material-icons">assignment</i>
                 <p> Data Anggota </p>
               </a>
@@ -77,7 +77,7 @@
                     {{-- <a class="dropdown-item" href="#" disabled>Profile</a> --}}
                     <button class="dropdown-item" data-toggle="modal" data-target="#logoutPopup" style="width: 94%" disabled>Profile</button>
                     <div class="dropdown-divider"></div>
-                    <button class="dropdown-item" data-toggle="modal" data-target="#logoutPopup" style="width: 94%" disabled>Logout</button>
+                    <button class="dropdown-item" data-toggle="modal" data-target="#logoutPopup" style="width: 94%">Logout</button>
                   </div>
                 </li>
               </ul>
