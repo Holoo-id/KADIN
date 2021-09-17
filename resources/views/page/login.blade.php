@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
       <div class="container">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="javascript:;">{{ $pageName }}</a>
+          <a class="navbar-brand" href="javascript:;">KADIN</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
@@ -33,12 +33,6 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a href="{{ route('dashboard') }}" class="nav-link">
-                <i class="material-icons">dashboard</i>
-                Dashboard
-              </a>
-            </li>
             <li class="nav-item ">
               <a href="{{ route('register') }}" class="nav-link">
                 <i class="material-icons">person_add</i>
@@ -61,7 +55,7 @@
         <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
         <div class="container">
           <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+            <div class="col-lg-5 col-md-6 col-sm-8 ml-auto mr-auto">
               <form class="form" method="" action="">
                 <div class="card card-login card-hidden">
                   <div class="card-header card-header-primary text-center">
@@ -77,12 +71,12 @@
                         <i class="fa fa-google-plus"></i>
                       </a>
                     </div> --}}
-                    <img src="{{ asset('/assets/img/kadin-logo.png') }}" alt="" srcset="" width="128px">
+                    <img src="{{ asset('/assets/img/kadin-logo.png') }}" alt="" srcset="" width="192px">
                   </div>
                   <div class="card-body ">
                     {{-- <p class="card-description text-center">Or Be Classical</p> --}}
                     <span class="bmd-form-group">
-                      <div class="input-group">
+                      <div class="input-group my-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text">
                             <i class="material-icons">perm_identity</i>

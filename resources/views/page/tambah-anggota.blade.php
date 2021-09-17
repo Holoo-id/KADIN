@@ -11,74 +11,83 @@
       <form method="get" action="/" class="form-horizontal">
         <div class="modal-body">
           <div class="row">
-            <label class="col-sm-4 col-form-label">Nama</label>
+            <label class="col-sm-4 col-form-label">*Nama</label>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input type="text" name="nama" class="form-control">
+                <span class="bmd-help">Harus diisi</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 col-form-label">*NIK</label>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input type="text" name="nik" class="form-control" pattern="[0-9]{16}">
+                <span class="bmd-help">Harus diisi</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 col-form-label">*Telepon</label>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input type="tel" name="phone" class="form-control">
+                <span class="bmd-help">Harus diisi</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 col-form-label">*Whatsapp</label>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input type="tel" name="wa" class="form-control">
+                <span class="bmd-help">Harus diisi</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 col-form-label">*Tanggal Lahir</label>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input type="date" name="tgl_lahir" class="form-control" max="{{ now()->toDateString('Y-m-d') }}">
+                <span class="bmd-help">Harus diisi</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 col-form-label">*Provinsi</label>
             <div class="col-sm-8">
               <div class="form-group">
                 <input type="text" class="form-control">
-                <span class="bmd-help">Errors message goes here</span>
+                <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
           </div>
           <div class="row">
-            <label class="col-sm-4 col-form-label">NIK</label>
-            <div class="col-sm-8">
-              <div class="form-group">
-                <input type="text" class="form-control" pattern="[0-9]{16}">
-                <span class="bmd-help">Errors message goes here</span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <label class="col-sm-4 col-form-label">Telepon</label>
-            <div class="col-sm-8">
-              <div class="form-group">
-                <input type="tel" class="form-control">
-                <span class="bmd-help">Errors message goes here</span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <label class="col-sm-4 col-form-label">Usia</label>
-            <div class="col-sm-8">
-              <div class="form-group">
-                <input type="text" class="form-control" pattern="[0-9]{2}">
-                <span class="bmd-help">Errors message goes here</span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <label class="col-sm-4 col-form-label">Provinsi</label>
+            <label class="col-sm-4 col-form-label">*Kota / Kabupaten</label>
             <div class="col-sm-8">
               <div class="form-group">
                 <input type="text" class="form-control">
-                <span class="bmd-help">Errors message goes here</span>
+                <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
           </div>
           <div class="row">
-            <label class="col-sm-4 col-form-label">Kota / Kabupaten</label>
+            <label class="col-sm-4 col-form-label">*Kecamatan</label>
             <div class="col-sm-8">
               <div class="form-group">
                 <input type="text" class="form-control">
-                <span class="bmd-help">Errors message goes here</span>
+                <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
           </div>
           <div class="row">
-            <label class="col-sm-4 col-form-label">Kecamatan</label>
+            <label class="col-sm-4 col-form-label">*Desa / Kelurahan</label>
             <div class="col-sm-8">
               <div class="form-group">
                 <input type="text" class="form-control">
-                <span class="bmd-help">Errors message goes here</span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <label class="col-sm-4 col-form-label">Desa / Kelurahan</label>
-            <div class="col-sm-8">
-              <div class="form-group">
-                <input type="text" class="form-control">
-                <span class="bmd-help">Errors message goes here</span>
+                <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
           </div>
@@ -93,7 +102,7 @@
             <div class="col-sm-8">
               <div class="form-group">
                 <input type="text" class="form-control">
-                <span class="bmd-help">Errors message goes here</span>
+                <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
           </div>
@@ -102,7 +111,7 @@
             <div class="col-sm-8">
               <div class="form-group">
                 <input type="text" class="form-control">
-                <span class="bmd-help">Errors message goes here</span>
+                <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
           </div>
@@ -111,7 +120,7 @@
             <div class="col-sm-8">
               <div class="form-group">
                 <input type="number" class="form-control">
-                <span class="bmd-help">Errors message goes here</span>
+                <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
           </div>
