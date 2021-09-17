@@ -9,6 +9,14 @@ class Alamat extends Model
 {
     use HasFactory;
     protected $table = 'tb_detail_alamat';
+    protected $fillable = [
+        'lattitude',
+        'longitude',
+        'kelurahan_desa',
+        'kecamatan',
+        'kabupaten_kota',
+        'provinsi'
+    ];
     public function Anggota()
     {
         return $this->hasOne(Anggota::class, 'id_alamat');

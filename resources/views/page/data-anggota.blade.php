@@ -18,8 +18,8 @@
                 </button>
               </div>
               <div class="col d-flex justify-content-end">
-                <a href="" class="btn btn-danger">Cetak Sebagai PDF</a>
-                <a href="" class="btn btn-success">Cetak Sebagai EXCEL</a>
+                <a href="{{ route('anggota-pdf') }}" class="btn btn-danger">Cetak Sebagai PDF</a>
+                <a href="{{ route('anggota-excel') }}" class="btn btn-success">Cetak Sebagai EXCEL</a>
               </div>
             </div>
             <!--        Here you can write extra buttons/actions for the toolbar-->

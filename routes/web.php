@@ -38,7 +38,13 @@ Route::middleware(['guest'])->group(function ()
 Route::middleware(['auth'])->group(function ()
 {
     Route::get('/data-anggota', 'App\Http\Controllers\DataAnggotaController@index')->name('dashboard');
-    
+    Route::get('/provinsi/kota/{id}', 'App\Http\Controllers\DataAnggotaController@kota')->name('kota');
+    Route::get('/provinsi/kota/kecamatan/{id}', 'App\Http\Controllers\DataAnggotaController@kecamatan')->name('kecamatan');
+    Route::get('/provinsi/kota/kecamatan/kelurahan/{id}', 'App\Http\Controllers\DataAnggotaController@kelurahan')->name('kelurahan');
+    Route::post('/data-anggota/post-data-anggota', 'App\Http\Controllers\DataAnggotaController@create')->name('post-data-anggota');
+    Route::get('/data-anggota/anggota-pdf', 'App\Http\Controllers\DataAnggotaController@anggotaPDF')->name('anggota-pdf');
+    Route::get('/data-anggota/anggota-excel', 'App\Http\Controllers\DataAnggotaController@anggotaExcel')->name('anggota-excel');
+   
     Route::get('/tambah-anggota', function () {
         $pageName = 'Tambah Anggota';
         return view('page.tambah-anggota', compact('pageName'));
