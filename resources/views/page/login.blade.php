@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
       <div class="container">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="javascript:;">{{ $pageName }}</a>
+          <a class="navbar-brand" href="javascript:;">KADIN</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
@@ -33,12 +33,6 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a href="{{ route('dashboard') }}" class="nav-link">
-                <i class="material-icons">dashboard</i>
-                Dashboard
-              </a>
-            </li>
             <li class="nav-item ">
               <a href="{{ route('register') }}" class="nav-link">
                 <i class="material-icons">person_add</i>
@@ -78,12 +72,12 @@
                         <i class="fa fa-google-plus"></i>
                       </a>
                     </div> --}}
-                    <img src="{{ asset('/assets/img/kadin-logo.png') }}" alt="" srcset="" width="128px">
+                    <img src="{{ asset('/assets/img/kadin-logo.png') }}" alt="" srcset="" width="192px">
                   </div>
                   <div class="card-body ">
                     {{-- <p class="card-description text-center">Or Be Classical</p> --}}
                     <span class="bmd-form-group">
-                      <div class="input-group">
+                      <div class="input-group my-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text">
                             <i class="material-icons">perm_identity</i>

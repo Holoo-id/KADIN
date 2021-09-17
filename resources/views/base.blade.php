@@ -28,12 +28,6 @@
         </div>
         <div class="sidebar-wrapper">
           <ul class="nav">
-            <li class="nav-item ">
-              <a class="nav-link" href="{{ route('dashboard') }}">
-                <i class="material-icons">dashboard</i>
-                <p> Dashboard </p>
-              </a>
-            </li>
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('data-anggota') }}">
                 <i class="material-icons">assignment</i>
@@ -80,10 +74,10 @@
                     </p>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Settings</a>
+                    {{-- <a class="dropdown-item" href="#" disabled>Profile</a> --}}
+                    <button class="dropdown-item" data-toggle="modal" data-target="#logoutPopup" style="width: 94%" disabled>Profile</button>
                     <div class="dropdown-divider"></div>
-                    <button class="dropdown-item" data-toggle="modal" data-target="#logoutPopup" style="width: 94%">Logout</button>
+                    <button class="dropdown-item" data-toggle="modal" data-target="#logoutPopup" style="width: 94%" disabled>Logout</button>
                   </div>
                 </li>
               </ul>

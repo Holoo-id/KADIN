@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
       <div class="container">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="javascript:;">{{ $pageName }}</a>
+          <a class="navbar-brand" href="javascript:;">KADIN</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
@@ -32,13 +32,6 @@
           <span class="navbar-toggler-icon icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a href="{{ route('dashboard') }}" class="nav-link">
-                <i class="material-icons">dashboard</i>
-                Dashboard
-              </a>
-            </li>
             <li class="nav-item active">
               <a href="{{ route('register') }}" class="nav-link">
                 <i class="material-icons">person_add</i>
@@ -57,7 +50,7 @@
     </nav>
     <!-- End Navbar -->
     <div class="wrapper wrapper-full-page">
-      <div class="page-header register-page header-filter" filter-color="black" style="background-image: url('../../assets/img/4.jpg')">
+      <div class="page-header register-page header-filter" filter-color="black" style="background-image: url('../../assets/img/3.jpg')">
         <div class="container">
           <div class="row">
             <div class="col-md-5 ml-auto mr-auto">
@@ -65,58 +58,11 @@
                 <h2 class="card-title text-center">Register</h2>
                 <div class="card-body">
                   <div class="row">
-                    {{-- <div class="col-md-5 ml-auto">
-                      <div class="info info-horizontal">
-                        <div class="icon icon-chenin">
-                          <i class="material-icons">timeline</i>
-                        </div>
-                        <div class="description">
-                          <h4 class="info-title">Marketing</h4>
-                          <p class="description">
-                            We've created the marketing campaign of the website. It was a very interesting collaboration.
-                          </p>
-                        </div>
-                      </div>
-                      <div class="info info-horizontal">
-                        <div class="icon icon-primary">
-                          <i class="material-icons">code</i>
-                        </div>
-                        <div class="description">
-                          <h4 class="info-title">Fully Coded in HTML5</h4>
-                          <p class="description">
-                            We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub.
-                          </p>
-                        </div>
-                      </div>
-                      <div class="info info-horizontal">
-                        <div class="icon icon-info">
-                          <i class="material-icons">group</i>
-                        </div>
-                        <div class="description">
-                          <h4 class="info-title">Built Audience</h4>
-                          <p class="description">
-                            There is also a Fully Customizable CMS Admin Dashboard for this product.
-                          </p>
-                        </div>
-                      </div>
-                    </div> --}}
                     <div class="col-md mr-auto">
-                      {{-- <div class="social text-center">
-                        <button class="btn btn-just-icon btn-round btn-twitter">
-                          <i class="fa fa-twitter"></i>
-                        </button>
-                        <button class="btn btn-just-icon btn-round btn-dribbble">
-                          <i class="fa fa-dribbble"></i>
-                        </button>
-                        <button class="btn btn-just-icon btn-round btn-facebook">
-                          <i class="fa fa-facebook"> </i>
-                        </button>
-                        <h4 class="mt-3"> or be classical </h4>
-                      </div> --}}
                       <form class="form" method="POST" action="{{route('register')}}">
                         @csrf
                         <div class="form-group has-default">
-                          <div class="input-group">
+                          <div class="input-group mb-4">
                             <div class="input-group-prepend">
                               <span class="input-group-text">
                                 <i class="material-icons">face</i>
@@ -126,7 +72,7 @@
                           </div>
                         </div>
                         <div class="form-group has-default">
-                          <div class="input-group">
+                          <div class="input-group mb-4">
                             <div class="input-group-prepend">
                               <span class="input-group-text">
                                 <i class="material-icons">perm_identity</i>
@@ -136,7 +82,7 @@
                           </div>
                         </div>
                         <div class="form-group has-default">
-                          <div class="input-group">
+                          <div class="input-group mb-4">
                             <div class="input-group-prepend">
                               <span class="input-group-text">
                                 <i class="material-icons">lock_outline</i>
