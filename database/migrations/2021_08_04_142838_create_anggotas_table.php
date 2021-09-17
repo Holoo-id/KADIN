@@ -22,6 +22,9 @@ class CreateAnggotasTable extends Migration
             $table->string('no_WA',18);
             $table->text('alamat');
             $table->foreignId('id_alamat');
+            $table->string("jenis_usaha");
+            $table->string("produk");
+            $table->integer("jumlah_karyawan");
             $table->timestamps();
         });
     }

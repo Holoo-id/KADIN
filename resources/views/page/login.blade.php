@@ -62,7 +62,8 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-              <form class="form" method="" action="">
+              <form class="form" method="POST" action="{{route('login')}}">
+                @csrf
                 <div class="card card-login card-hidden">
                   <div class="card-header card-header-primary text-center">
                     {{-- <h4 class="card-title">{{ $pageName }}</h4> --}}
@@ -88,7 +89,7 @@
                             <i class="material-icons">perm_identity</i>
                           </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" pattern="[0-9]{16}">
+                        <input type="text" class="form-control" placeholder="Username" pattern="[0-9]{16}" name="name" id="name">
                       </div>
                     </span>
                     <span class="bmd-form-group">
@@ -98,7 +99,7 @@
                             <i class="material-icons">lock_outline</i>
                           </span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Password...">
+                        <input type="password" class="form-control" placeholder="Password..." name="password" id="password">
                       </div>
                     </span>
                   </div>

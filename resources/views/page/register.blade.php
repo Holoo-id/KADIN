@@ -113,7 +113,8 @@
                         </button>
                         <h4 class="mt-3"> or be classical </h4>
                       </div> --}}
-                      <form class="form" method="" action="">
+                      <form class="form" method="POST" action="{{route('register')}}">
+                        @csrf
                         <div class="form-group has-default">
                           <div class="input-group">
                             <div class="input-group-prepend">
@@ -121,7 +122,7 @@
                                 <i class="material-icons">face</i>
                               </span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Username...">
+                            <input type="text" class="form-control" placeholder="Username..."  name="name" id="name">
                           </div>
                         </div>
                         <div class="form-group has-default">
@@ -131,7 +132,7 @@
                                 <i class="material-icons">perm_identity</i>
                               </span>
                             </div>
-                            <input type="email" class="form-control" placeholder="Email...">
+                            <input type="email" class="form-control" placeholder="Email..." name="email" id="email">
                           </div>
                         </div>
                         <div class="form-group has-default">
@@ -141,7 +142,7 @@
                                 <i class="material-icons">lock_outline</i>
                               </span>
                             </div>
-                            <input type="password" placeholder="Password..." class="form-control">
+                            <input type="password" placeholder="Password..." class="form-control"  name="password" id="password">
                           </div>
                         </div>
                         <div class="form-group has-default">
@@ -151,7 +152,7 @@
                                 <i class="material-icons">lock_outline</i>
                               </span>
                             </div>
-                            <input type="password" placeholder="Konfirmasi Password..." class="form-control">
+                            <input type="password" placeholder="Konfirmasi Password..." class="form-control" name="password_confirmation" id="password_confirmation">
                           </div>
                         </div>
                         <div class="form-check">
