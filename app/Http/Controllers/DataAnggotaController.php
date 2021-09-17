@@ -12,11 +12,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class DataAnggotaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         $response = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi');
@@ -30,91 +25,55 @@ class DataAnggotaController extends Controller
         $pageName = 'Data Anggota';
         return view('page.data-anggota', compact('members', 'pageName','provinsi','inProvinsi'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create(Request $request)
     {
         
-    $tambahDetailAlamat = Alamat::create([
-        'lattitude' => $request->lattitude,
-        'longitude' => $request->longitude,
-        'kelurahan_desa' => $request->kelurahan,
-        'kecamatan' => $request->kecamatan,
-        'kabupaten_kota' => $request->kota,
-        'provinsi' => $request->in_provinsi,
-    ]);
+        $tambahDetailAlamat = Alamat::create([
+            'lattitude' => $request->lattitude,
+            'longitude' => $request->longitude,
+            'kelurahan_desa' => $request->kelurahan,
+            'kecamatan' => $request->kecamatan,
+            'kabupaten_kota' => $request->kota,
+            'provinsi' => $request->in_provinsi,
+        ]);
 
-    $tambahDataAnggota = Anggota::create([
-           'Nama' => $request->nama,
-           'NIK' => $request->nik,
-           'tgl_lahir' => $request->tgl_lahir,
-           'no_HP' => $request->phone,
-           'no_WA' => $request->wa,
-           'alamat' => $request->alamat,
-           'id_alamat' => $tambahDetailAlamat->id,
-           'jenis_usaha' => $request->jenis_usaha,
-           'produk' => $request->produk,
-           'jumlah_karyawan' => $request->jumlah_karyawan,
+        $tambahDataAnggota = Anggota::create([
+            'Nama' => $request->nama,
+            'NIK' => $request->nik,
+            'tgl_lahir' => $request->tgl_lahir,
+            'no_HP' => $request->phone,
+            'no_WA' => $request->wa,
+            'alamat' => $request->alamat,
+            'id_alamat' => $tambahDetailAlamat->id,
+            'jenis_usaha' => $request->jenis_usaha,
+            'produk' => $request->produk,
+            'jumlah_karyawan' => $request->jumlah_karyawan,
        ]);
 
        return redirect('/data-anggota');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
         //
@@ -136,13 +95,15 @@ class DataAnggotaController extends Controller
         $response = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan='.$id);
         $kelurahan = $response->json();
 
-
         return $kelurahan;
     }
     public function anggotaPDF(){
         $anggota = Anggota::all();
-        $pdf = PDF::loadview('page.anggota-pdf',compact('anggota'));
-        return $pdf->download('laporan-anggota-pdf.pdf');
+        $pdf = PDF::loadview('page.anggota-pdf',compact('anggota'))
+        ->setPaper('a4', 'landscape')
+        ->setOptions(['defaultFont' => 'Montserrat'])
+        ->stream('data-anggota.pdf');
+        return $pdf;
     }
     public function anggotaExcel(){
         return Excel::download(new AnggotaExport, 'anggota.xlsx');
