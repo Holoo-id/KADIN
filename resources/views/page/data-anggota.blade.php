@@ -76,8 +76,8 @@
                     <td>{{ $member->produk }}</td>
                     <td>{{ $member->jumlah_karyawan }}</td>
                     <td class="text-right">
-                      <a href="#" class="btn btn-link btn-success btn-just-icon edit"><i class="material-icons">mode_edit</i></a>
-                      <button class="btn btn-link btn-danger btn-just-icon remove" data-toggle="modal" data-target="#deletePopup">
+                      <button class="btn btn-link btn-success btn-just-icon edit" data-toggle="modal" data-target="#modalEdit{{ $member->id }}"><i class="material-icons">mode_edit</i></button>
+                      <button class="btn btn-link btn-danger btn-just-icon remove" data-toggle="modal" data-target="#deletePopup{{ $member->id }}">
                         <i class="material-icons">delete</i>
                       </button>
                     </td>
@@ -95,4 +95,6 @@
   </div>
   <!-- end row -->
   @include('page.tambah-anggota')
+  @include('page.edit-anggota')
+  @include('page.hapus-anggota')
 @endsection

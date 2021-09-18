@@ -44,7 +44,9 @@ Route::middleware(['auth'])->group(function ()
     Route::post('/data-anggota/post-data-anggota', 'App\Http\Controllers\DataAnggotaController@create')->name('post-data-anggota');
     Route::get('/data-anggota/anggota-pdf', 'App\Http\Controllers\DataAnggotaController@anggotaPDF')->name('anggota-pdf');
     Route::get('/data-anggota/anggota-excel', 'App\Http\Controllers\DataAnggotaController@anggotaExcel')->name('anggota-excel');
-   
+    Route::post('/data-anggota/post-edit-data-anggota', 'App\Http\Controllers\DataAnggotaController@update')->name('post-edit-data-anggota');
+    Route::get('/data-anggota/hapus', 'App\Http\Controllers\DataAnggotaController@destroy')->name('hapus');
+
     Route::get('/tambah-anggota', function () {
         $pageName = 'Tambah Anggota';
         return view('page.tambah-anggota', compact('pageName'));

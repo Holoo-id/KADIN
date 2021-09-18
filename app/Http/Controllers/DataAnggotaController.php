@@ -72,7 +72,7 @@ class DataAnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -104,9 +104,33 @@ class DataAnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $editDataAnggota = Anggota::where('id',$request->id)->update([
+            'Nama' => $request->nama,
+            'NIK' => $request->nik,
+            'tgl_lahir' => $request->tgl_lahir,
+            'no_HP' => $request->phone,
+            'no_WA' => $request->wa,
+            'alamat' => $request->alamat,
+            'id_alamat' => $request->id_alamat,
+            'jenis_usaha' => $request->jenis_usaha,
+            'produk' => $request->produk,
+            'jumlah_karyawan' => $request->jumlah_karyawan,
+        ]);
+        
+        $editDetailAlamat = Alamat::where('id',$request->id_alamat)->update([
+            'lattitude' => $request->lattitude,
+            'longitude' => $request->longitude,
+            'kelurahan_desa' => $request->edit_kelurahan,
+            'kecamatan' => $request->edit_kecamatan,
+            'kabupaten_kota' => $request->edit_kota,
+            'provinsi' => $request->edit_in_provinsi,
+        ]);
+
+       
+ 
+        return redirect('/data-anggota');
     }
 
     /**
@@ -115,9 +139,15 @@ class DataAnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $hapusAnggota = Anggota::where('id',$request->id);
+        $hapusAnggota->delete();
+        $hapusAnggota = Alamat::where('id',$request->id_alamat);
+        $hapusAnggota->delete();
+
+        return redirect('/data-anggota');
+    
     }
     public function kota(Request $request, $id){
         $responseKota = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi='.$id);
