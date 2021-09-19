@@ -21,7 +21,7 @@ class DataAnggotaController extends Controller
         $inProvinsi = $request->session()->get('inProvinsi');
 
         $members = Anggota::orderBy('created_at', 'desc')
-        ->paginate(10);
+        ->get();
         $pageName = 'Data Anggota';
         return view('page.data-anggota', compact('members', 'pageName','provinsi','inProvinsi'));
     }
@@ -30,14 +30,13 @@ class DataAnggotaController extends Controller
     {
         
         $tambahDetailAlamat = Alamat::create([
-            'lattitude' => $request->lattitude,
-            'longitude' => $request->longitude,
+            'lokasi' => $request->lokasi,
             'kelurahan_desa' => $request->kelurahan,
             'kecamatan' => $request->kecamatan,
             'kabupaten_kota' => $request->kota,
             'provinsi' => $request->in_provinsi,
         ]);
-
+        
         $tambahDataAnggota = Anggota::create([
             'Nama' => $request->nama,
             'NIK' => $request->nik,
@@ -49,33 +48,11 @@ class DataAnggotaController extends Controller
             'jenis_usaha' => $request->jenis_usaha,
             'produk' => $request->produk,
             'jumlah_karyawan' => $request->jumlah_karyawan,
-       ]);
-
-       return redirect('/data-anggota');
-    }
-    
-    public function store(Request $request)
-    {
+        ]);
         
+        return redirect('/data-anggota');
     }
     
-    public function show($id)
-    {
-        //
-    }
-    
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         $editDataAnggota = Anggota::where('id',$request->id)->update([
@@ -92,8 +69,7 @@ class DataAnggotaController extends Controller
         ]);
         
         $editDetailAlamat = Alamat::where('id',$request->id_alamat)->update([
-            'lattitude' => $request->lattitude,
-            'longitude' => $request->longitude,
+            'lokasi' => $request->lokasi,
             'kelurahan_desa' => $request->edit_kelurahan,
             'kecamatan' => $request->edit_kecamatan,
             'kabupaten_kota' => $request->edit_kota,

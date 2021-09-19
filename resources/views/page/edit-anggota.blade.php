@@ -66,16 +66,17 @@
             <div class="col-sm-8">
               <div class="form-group">
                 <select name="edit_in_provinsi" id="edit_in_provinsi" class="form-control" onclick="selectProv()">
-                    
-                    @foreach($provinsi as $gp)
-                  @foreach($gp as $p)
-                                <option id="optionProvinsi" value="{{ $p['id'] }}" selected>{{ $p['nama'] }}</option>
-                  
+                  @foreach($provinsi as $gp)
+                    @foreach($gp as $p)
+                      {{-- @if ($member->kategori->provinsi == $p['id'])
+                        <option id="optionProvinsi" value="{{ $p['id'] }}" selected>{{ $p['nama'] }}</option>
+                      @else
+                        <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option>
+                      @endif --}}
+                      <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option>
+                    @endforeach
                   @endforeach
-                @endforeach
                 </select>
-              
-               
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -131,13 +132,22 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          {{-- <div class="row">
             <label class="col-sm-12 col-form-label">Titik Koordinat</label>
             
             <div class="col-sm-12">
             <input type="text" class="form-control" name="lattitude" placeholder="lattitude" value="{{ $member->kategori->lattitude }}">
             <input type="text" class="form-control" name="longitude" placeholder="longitude" value="{{ $member->kategori->longitude }}">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d379.2733927706404!2d107.57982613800075!3d-6.864421743410869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e76e523aa4df%3A0x603c8e0ba6705dfe!2sDigital%20Milenial%20Kreatif%20(DMK)!5e0!3m2!1sid!2sid!4v1631470945345!5m2!1sid!2sid" width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div> --}}
+          <div class="row">
+            <label class="col-sm-4 col-form-label">Lokasi</label>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input type="url" class="form-control" name="lokasi" value="{{ $member->kategori->lokasi }}">
+                <span class="bmd-help">Harus diisi</span>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -179,55 +189,54 @@
 @endforeach
 <!--  End Modal -->
 <script>
- $(document).ready(function() {
-            $('#edit_in_provinsi').change( function() {
-               $.getJSON('/provinsi/kota/'+$('#edit_in_provinsi').val(), 
-               function(data){
-                    $('#edit_kota').find('option').remove();
-                   
-                    $.each(data, function(title,arrayKota){
-                        $.each(arrayKota, function(i,j){
-                          $( "#edit_kota" ).prop( "disabled", false )
-                            $('#edit_kota').append(new Option(j['nama'],j['id']))
-                        });
-                    })
-                    
-               });
-               
-            });
-            $('#edit_kota').change( function() {
-               $.getJSON('/provinsi/kota/kecamatan/'+$('#edit_kota').val(), 
-               function(dataKec){
-                    $('#edit_kecamatan').find('option').remove();
-                   
-                    $.each(dataKec, function(title,arrayKecamatan){
-                        $.each(arrayKecamatan, function(k,c){
-                          $( "#edit_kecamatan" ).prop( "disabled", false )
-                            $('#edit_kecamatan').append(new Option(c['nama'],c['id']))
-                           
-                        });
-                    })
-                    
-               });
-               
-            });
-            $('#edit_kecamatan').change( function() {
-               $.getJSON('/provinsi/kota/kecamatan/kelurahan/'+$('#edit_kecamatan').val(), 
-               function(dataKel){
-                    $('#edit_kelurahan').find('option').remove();
-                   
-                    $.each(dataKel, function(title,arrayKelurahan){
-                        $.each(arrayKelurahan, function(k,l){
-                          $( "#edit_kelurahan" ).prop( "disabled", false )
-                            $('#edit_kelurahan').append( new Option(l['nama'],l['id']))
-                        });
-                    })
-                    
-               });
-               
-            });
- });
+  $(document).ready(function() {
+    $('#edit_in_provinsi').change( function() {
+        $.getJSON('/provinsi/kota/'+$('#edit_in_provinsi').val(), 
+        function(data){
+            $('#edit_kota').find('option').remove();
+            
+            $.each(data, function(title,arrayKota){
+                $.each(arrayKota, function(i,j){
+                  $( "#edit_kota" ).prop( "disabled", false )
+                    $('#edit_kota').append(new Option(j['nama'],j['id']))
+                });
+            })
+            
+        });
         
+    });
+    $('#edit_kota').change( function() {
+        $.getJSON('/provinsi/kota/kecamatan/'+$('#edit_kota').val(), 
+        function(dataKec){
+            $('#edit_kecamatan').find('option').remove();
+            
+            $.each(dataKec, function(title,arrayKecamatan){
+                $.each(arrayKecamatan, function(k,c){
+                  $( "#edit_kecamatan" ).prop( "disabled", false )
+                    $('#edit_kecamatan').append(new Option(c['nama'],c['id']))
+                    
+                });
+            })
+            
+        });
+        
+    });
+    $('#edit_kecamatan').change( function() {
+        $.getJSON('/provinsi/kota/kecamatan/kelurahan/'+$('#edit_kecamatan').val(), 
+        function(dataKel){
+            $('#edit_kelurahan').find('option').remove();
+            
+            $.each(dataKel, function(title,arrayKelurahan){
+                $.each(arrayKelurahan, function(k,l){
+                  $( "#edit_kelurahan" ).prop( "disabled", false )
+                    $('#edit_kelurahan').append( new Option(l['nama'],l['id']))
+                });
+            })
+            
+        });
+        
+    });
+  });
 </script>
 
 <script>

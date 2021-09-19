@@ -63,16 +63,13 @@
             <div class="col-sm-8">
               <div class="form-group">
                 <select name="in_provinsi" id="in_provinsi" class="form-control" onclick="selectProv()">
-                    <option value="">Pilih</option>
-                    @foreach($provinsi as $gp)
-                  @foreach($gp as $p)
-                                <option id="optionProvinsi" value="{{ $p['id'] }}" selected>{{ $p['nama'] }}</option>
-                  
+                  <option value="">Pilih</option>
+                  @foreach($provinsi as $gp)
+                    @foreach($gp as $p)
+                      <option id="optionProvinsi" value="{{ $p['id'] }}" selected>{{ $p['nama'] }}</option>
+                    @endforeach
                   @endforeach
-                @endforeach
                 </select>
-              
-               
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -129,12 +126,12 @@
             </div>
           </div>
           <div class="row">
-            <label class="col-sm-12 col-form-label">Titik Koordinat</label>
-            
-            <div class="col-sm-12">
-            <input type="text" class="form-control" name="lattitude" placeholder="lattitude">
-            <input type="text" class="form-control" name="longitude" placeholder="longitude">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d379.2733927706404!2d107.57982613800075!3d-6.864421743410869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e76e523aa4df%3A0x603c8e0ba6705dfe!2sDigital%20Milenial%20Kreatif%20(DMK)!5e0!3m2!1sid!2sid!4v1631470945345!5m2!1sid!2sid" width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <label class="col-sm-4 col-form-label">Titik Koordinat</label>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input type="url" class="form-control" name="lokasi" placeholder="data lokasi diisi berdasarkan tautan lokasi pada google maps">
+                <span class="bmd-help">Harus diisi</span>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -175,55 +172,54 @@
 </div>
 <!--  End Modal -->
 <script>
- $(document).ready(function() {
-            $('#in_provinsi').change( function() {
-               $.getJSON('/provinsi/kota/'+$('#in_provinsi').val(), 
-               function(data){
-                    $('#kota').find('option').remove();
-                   
-                    $.each(data, function(title,arrayKota){
-                        $.each(arrayKota, function(i,j){
-                          $( "#kota" ).prop( "disabled", false )
-                            $('#kota').append(new Option(j['nama'],j['id']))
-                        });
-                    })
-                    
-               });
-               
-            });
-            $('#kota').change( function() {
-               $.getJSON('/provinsi/kota/kecamatan/'+$('#kota').val(), 
-               function(dataKec){
-                    $('#kecamatan').find('option').remove();
-                   
-                    $.each(dataKec, function(title,arrayKecamatan){
-                        $.each(arrayKecamatan, function(k,c){
-                          $( "#kecamatan" ).prop( "disabled", false )
-                            $('#kecamatan').append(new Option(c['nama'],c['id']))
-                           
-                        });
-                    })
-                    
-               });
-               
-            });
-            $('#kecamatan').change( function() {
-               $.getJSON('/provinsi/kota/kecamatan/kelurahan/'+$('#kecamatan').val(), 
-               function(dataKel){
-                    $('#kelurahan').find('option').remove();
-                   
-                    $.each(dataKel, function(title,arrayKelurahan){
-                        $.each(arrayKelurahan, function(k,l){
-                          $( "#kelurahan" ).prop( "disabled", false )
-                            $('#kelurahan').append( new Option(l['nama'],l['id']))
-                        });
-                    })
-                    
-               });
-               
-            });
- });
+  $(document).ready(function() {
+    $('#in_provinsi').change( function() {
+        $.getJSON('/provinsi/kota/'+$('#in_provinsi').val(), 
+        function(data){
+            $('#kota').find('option').remove();
+            
+            $.each(data, function(title,arrayKota){
+                $.each(arrayKota, function(i,j){
+                  $( "#kota" ).prop( "disabled", false )
+                    $('#kota').append(new Option(j['nama'],j['id']))
+                });
+            })
+            
+        });
         
+    });
+    $('#kota').change( function() {
+        $.getJSON('/provinsi/kota/kecamatan/'+$('#kota').val(), 
+        function(dataKec){
+            $('#kecamatan').find('option').remove();
+            
+            $.each(dataKec, function(title,arrayKecamatan){
+                $.each(arrayKecamatan, function(k,c){
+                  $( "#kecamatan" ).prop( "disabled", false )
+                    $('#kecamatan').append(new Option(c['nama'],c['id']))
+                    
+                });
+            })
+            
+        });
+        
+    });
+    $('#kecamatan').change( function() {
+        $.getJSON('/provinsi/kota/kecamatan/kelurahan/'+$('#kecamatan').val(), 
+        function(dataKel){
+            $('#kelurahan').find('option').remove();
+            
+            $.each(dataKel, function(title,arrayKelurahan){
+                $.each(arrayKelurahan, function(k,l){
+                  $( "#kelurahan" ).prop( "disabled", false )
+                    $('#kelurahan').append( new Option(l['nama'],l['id']))
+                });
+            })
+            
+        });
+        
+    });
+  });   
 </script>
 
 <script>

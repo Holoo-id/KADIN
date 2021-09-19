@@ -19,8 +19,7 @@ class AlamatSeeder extends Seeder
         for ($i=1; $i < 21; $i++) { 
             DB::table('tb_detail_alamat')->insert([
                 'id' => $i,
-                'lattitude' => '-6.8102063',
-                'longitude' => '107.561442',
+                'lokasi' => 'https://www.google.com/maps/',
                 'kelurahan_desa' => Str::random(10),
                 'kecamatan' => Str::random(10),
                 'kabupaten_kota' => Str::random(10),

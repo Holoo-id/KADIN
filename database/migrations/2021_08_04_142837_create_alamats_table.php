@@ -15,8 +15,7 @@ class CreateAlamatsTable extends Migration
     {
         Schema::create('tb_detail_alamat', function (Blueprint $table) {
             $table->id();
-            $table->string("lattitude", 200);
-            $table->string("longitude", 200);
+            $table->string("lokasi", 8000);
             $table->string("kelurahan_desa", 100);
             $table->string("kecamatan", 100);
             $table->string("kabupaten_kota", 100);

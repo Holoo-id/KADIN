@@ -36,7 +36,7 @@
                   <th>Kabupaten/Kota</th>
                   <th>Kecamatan</th>
                   <th>Kelurahan</th>
-                  <th>Titik Kordinat</th>
+                  {{-- <th>Titik Kordinat</th> --}}
                   <th>Jenis Usaha</th>
                   <th>Produk</th>
                   <th>Jumlah Karyawan</th>
@@ -53,7 +53,7 @@
                   <th>Kabupaten/Kota</th>
                   <th>Kecamatan</th>
                   <th>Kelurahan</th>
-                  <th>Titik Kordinat</th>
+                  {{-- <th>Titik Kordinat</th> --}}
                   <th>Jenis Usaha</th>
                   <th>Produk</th>
                   <th>Jumlah Karyawan</th>
@@ -71,12 +71,17 @@
                     <td>{{ $member->kategori->kabupaten_kota }}</td>
                     <td>{{ $member->kategori->kecamatan }}</td>
                     <td>{{ $member->kategori->kelurahan_desa }}</td>
-                    <td>{{ $member->kategori->lattitude }},{{ $member->kategori->longitude }}</td>
+                    {{-- <td>{{ $member->kategori->lattitude }},{{ $member->kategori->longitude }}</td> --}}
                     <td>{{ $member->jenis_usaha }}</td>
                     <td>{{ $member->produk }}</td>
                     <td>{{ $member->jumlah_karyawan }}</td>
                     <td class="text-right">
-                      <button class="btn btn-link btn-success btn-just-icon edit" data-toggle="modal" data-target="#modalEdit{{ $member->id }}"><i class="material-icons">mode_edit</i></button>
+                      <a href="{{ $member->kategori->lokasi }}" target="_blank" class="btn btn-link btn-info btn-just-icon">
+                        <i class="material-icons">location_on</i>
+                      </a>
+                      <button class="btn btn-link btn-success btn-just-icon edit" data-toggle="modal" data-target="#modalEdit{{ $member->id }}">
+                        <i class="material-icons">mode_edit</i>
+                      </button>
                       <button class="btn btn-link btn-danger btn-just-icon remove" data-toggle="modal" data-target="#deletePopup{{ $member->id }}">
                         <i class="material-icons">delete</i>
                       </button>
@@ -94,7 +99,7 @@
     <!-- end col-md-12 -->
   </div>
   <!-- end row -->
-  @include('page.tambah-anggota')
-  @include('page.edit-anggota')
-  @include('page.hapus-anggota')
+    @include('page.tambah-anggota')
+    @include('page.edit-anggota')
+    @include('page.hapus-anggota')
 @endsection
