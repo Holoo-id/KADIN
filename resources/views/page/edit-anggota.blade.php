@@ -68,12 +68,12 @@
                 <select name="edit_in_provinsi" id="edit_in_provinsi" class="form-control" onclick="selectProv()">
                   @foreach($provinsi as $gp)
                     @foreach($gp as $p)
-                      {{-- @if ($member->kategori->provinsi == $p['id'])
+                      @if ($member->kategori->provinsi == $p['id'])
                         <option id="optionProvinsi" value="{{ $p['id'] }}" selected>{{ $p['nama'] }}</option>
                       @else
                         <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option>
-                      @endif --}}
-                      <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option>
+                      @endif
+                      {{-- <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option> --}}
                     @endforeach
                   @endforeach
                 </select>

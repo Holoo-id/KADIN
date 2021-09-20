@@ -67,7 +67,17 @@
                     <td>{{ $member->NIK }}</td>
                     <td>{{ $member->no_HP }}</td>
                     <td>{{ \Carbon\Carbon::now()->year - \Carbon\Carbon::parse($member->tgl_lahir)->format('Y') }}</td>
-                    <td>{{ $member->kategori->provinsi }}</td>
+                    <td>
+                      @foreach ($provinsi as $prov)
+                        @foreach ($prov as $p)
+                          @if ($member->kategori->provinsi == $p['id'])
+                            {{$p['nama']}}
+                          @else
+                            {{''}}
+                          @endif
+                        @endforeach
+                      @endforeach
+                    </td>
                     <td>{{ $member->kategori->kabupaten_kota }}</td>
                     <td>{{ $member->kategori->kecamatan }}</td>
                     <td>{{ $member->kategori->kelurahan_desa }}</td>
