@@ -28,13 +28,21 @@ class DataAnggotaController extends Controller
     
     public function create(Request $request)
     {
+        $responseProvinsi = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->provinsi)->json();
+        $responseKota = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kota/'.$request->kota)->json();
+        $responseKecamatan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kecamatan/'.$request->kecamatan)->json();
+        $responseKelurahan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kelurahan/'.$request->kelurahan)->json();
+        $provinsi = $responseProvinsi['nama'];
+        $kota = $responseKota['nama'];
         
+        dd($kota);
+
         $tambahDetailAlamat = Alamat::create([
             'lokasi' => $request->lokasi,
             'kelurahan_desa' => $request->kelurahan,
             'kecamatan' => $request->kecamatan,
             'kabupaten_kota' => $request->kota,
-            'provinsi' => $request->in_provinsi,
+            'provinsi' => $provinsi,
         ]);
         
         $tambahDataAnggota = Anggota::create([
