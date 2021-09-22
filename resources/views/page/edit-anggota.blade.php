@@ -65,8 +65,8 @@
             <label class="col-sm-4 col-form-label">*Provinsi</label>
             <div class="col-sm-8">
               <div class="form-group">
-                <select name="edit_provinsi" id="edit_provinsi" class="form-control">
-                  <option value="0" selected>======PILIH PROVINSI======</option>
+                <select name="edit_in_provinsi" id="edit_in_provinsi" class="form-control" onclick="selectProv()">
+                   <option value="0" selected>======PILIH PROVINSI======</option>
                   @foreach($provinsi as $gp)
                     @foreach($gp as $p)
                     <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option> 
@@ -82,8 +82,11 @@
             <div class="col-sm-8">
               <div class="form-group">
                <select name="edit_kota" id="edit_kota" class="form-control">
-                  <option value="0" selected>======PILIH KOTA/KABUPATEN======</option>
+               <option selected value=""></option>
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
                 </select>
+               </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -93,8 +96,11 @@
             <div class="col-sm-8">
               <div class="form-group">
               <select name="edit_kecamatan" id="edit_kecamatan" class="form-control">
-                <option value="0" selected>======PILIH KECAMATAN======</option>
+              <option selected value=""></option>
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
                 </select>
+               </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -104,8 +110,11 @@
             <div class="col-sm-8">
               <div class="form-group">
               <select name="edit_kelurahan" id="edit_kelurahan" class="form-control">
-                <option value="0" selected>======PILIH KELURAHAN/DESA======</option>
+              <option selected value=""></option>
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
                 </select>
+               </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -114,7 +123,7 @@
             <label class="col-sm-4 col-form-label">*Alamat</label>
             <div class="col-sm-8">
               <div class="form-group">
-                <textarea name="alamat" id="alamat" cols="30" rows="10" class="form-control">{{ $member->alamat }}</textarea>
+               <textarea name="alamat" id="alamat" cols="30" rows="10" class="form-control">{{ $member->alamat }}</textarea>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -177,20 +186,18 @@
 <!--  End Modal -->
 <script>
   $(document).ready(function() {
-    $('#edit_provinsi').change( function() {
-        EditProvFocused();
-        $.getJSON('/provinsi/kota/'+$('#edit_provinsi').val(), 
+    $('#edit_in_provinsi').change( function() {
+        $.getJSON('/provinsi/kota/'+$('#edit_in_provinsi').val(), 
         function(data){
             $('#edit_kota').find('option').remove();
-            $('#edit_kecamatan').find('option').remove();
-            $('#edit_kelurahan').find('option').remove();
-            $('#edit_kota').append(new Option('======PILIH KOTA/KABUPATEN======','0'));
-            $('#edit_kecamatan').append(new Option('======PILIH KECAMATAN======','0'));
-            $('#edit_kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
             $.each(data, function(title,arrayKota){
                 $.each(arrayKota, function(i,j){
                   $( "#edit_kota" ).prop( "disabled", false )
                     $('#edit_kota').append(new Option(j['nama'],j['id']))
+                    $('#edit_kecamatan').find('option').remove();
+                    $('#edit_kelurahan').find('option').remove();
+                    $('#edit_kecamatan').append(new Option('======PILIH KECAMATAN======','0'));
+                    $('#edit_kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
                 });
             })
             
@@ -198,17 +205,16 @@
         
     });
     $('#edit_kota').change( function() {
-        EditKotaFocused();
         $.getJSON('/provinsi/kota/kecamatan/'+$('#edit_kota').val(), 
         function(dataKec){
             $('#edit_kecamatan').find('option').remove();
-            $('#edit_kelurahan').find('option').remove();
-            $('#edit_kecamatan').append(new Option('======PILIH KECAMATAN======','0'));
-            $('#edit_kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
+            
             $.each(dataKec, function(title,arrayKecamatan){
                 $.each(arrayKecamatan, function(k,c){
                   $( "#edit_kecamatan" ).prop( "disabled", false )
                     $('#edit_kecamatan').append(new Option(c['nama'],c['id']))
+                    $('#edit_kelurahan').find('option').remove();
+                    $('#edit_kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
                     
                 });
             })
@@ -220,7 +226,7 @@
         $.getJSON('/provinsi/kota/kecamatan/kelurahan/'+$('#edit_kecamatan').val(), 
         function(dataKel){
             $('#edit_kelurahan').find('option').remove();
-            $('#edit_kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
+            
             $.each(dataKel, function(title,arrayKelurahan){
                 $.each(arrayKelurahan, function(k,l){
                   $( "#edit_kelurahan" ).prop( "disabled", false )
@@ -235,16 +241,9 @@
 </script>
 
 <script>
-  function EditProvFocused(){
+  function selectProv(){
     document.getElementById("edit_kelurahan").disabled = true;
     document.getElementById("edit_kecamatan").disabled = true;
     document.getElementById("edit_kota").disabled = true;
-  }
-  function EditKotaFocused(){
-    document.getElementById("edit_kelurahan").disabled = true;
-    document.getElementById("edit_kecamatan").disabled = true;
-  }
-  function EditKecamatanFocused(){
-    document.getElementById("edit_kelurahan").disabled = true;
   }
 </script>

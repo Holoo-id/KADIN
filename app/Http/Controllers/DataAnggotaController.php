@@ -63,6 +63,17 @@ class DataAnggotaController extends Controller
     
     public function update(Request $request)
     {
+        $responseProvinsi = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->edit_provinsi)->json();
+        $responseKota = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kota/'.$request->edit_kota)->json();
+        $responseKecamatan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kecamatan/'.$request->edit_kecamatan)->json();
+        $responseKelurahan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kelurahan/'.$request->edit_kelurahan)->json();
+        $provinsi = $responseProvinsi['nama'];
+        $kota = $responseKota['nama'];
+        $kecamatan = $responseKecamatan['nama'];
+        $kelurahan = $responseKelurahan['nama'];
+
+        dd($provinsi + $kota + $kecamatan + $kelurahan);
+
         $editDataAnggota = Anggota::where('id',$request->id)->update([
             'Nama' => $request->nama,
             'NIK' => $request->nik,
@@ -78,10 +89,10 @@ class DataAnggotaController extends Controller
         
         $editDetailAlamat = Alamat::where('id',$request->id_alamat)->update([
             'lokasi' => $request->lokasi,
-            'kelurahan_desa' => $request->edit_kelurahan,
-            'kecamatan' => $request->edit_kecamatan,
-            'kabupaten_kota' => $request->edit_kota,
-            'provinsi' => $request->edit_in_provinsi,
+            'kelurahan_desa' => $kelurahan,
+            'kecamatan' => $kecamatan,
+            'kabupaten_kota' => $kota,
+            'provinsi' => $provinsi,
         ]);
  
         return redirect('/data-anggota');
