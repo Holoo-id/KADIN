@@ -68,7 +68,7 @@
                     <td>{{ $member->no_HP }}</td>
                     <td>{{ \Carbon\Carbon::now()->year - \Carbon\Carbon::parse($member->tgl_lahir)->format('Y') }}</td>
                     <td>
-                      @foreach ($provinsi as $prov)
+                      {{-- @foreach ($provinsi as $prov)
                         @foreach ($prov as $p)
                           @if ($member->kategori->provinsi == $p['id'])
                             {{$p['nama']}}
@@ -76,7 +76,8 @@
                             {{''}}
                           @endif
                         @endforeach
-                      @endforeach
+                      @endforeach --}}
+                      {{$member->kategori->provinsi}}
                     </td>
                     <td>{{ $member->kategori->kabupaten_kota }}</td>
                     <td>{{ $member->kategori->kecamatan }}</td>

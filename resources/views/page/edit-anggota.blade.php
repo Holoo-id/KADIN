@@ -65,15 +65,15 @@
             <label class="col-sm-4 col-form-label">*Provinsi</label>
             <div class="col-sm-8">
               <div class="form-group">
-                <select name="edit_in_provinsi" id="edit_in_provinsi" class="form-control" onclick="selectProv()">
+                <select name="provinsi" id="provinsi" class="form-control" onclick="selectProv()">
+                  <option value="0" selected>======PILIH PROVINSI======</option>
                   @foreach($provinsi as $gp)
                     @foreach($gp as $p)
-                      @if ($member->kategori->provinsi == $p['id'])
+                      @if ($member->kategori->provinsi == $p['nama'])
                         <option id="optionProvinsi" value="{{ $p['id'] }}" selected>{{ $p['nama'] }}</option>
                       @else
                         <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option>
                       @endif
-                      {{-- <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option> --}}
                     @endforeach
                   @endforeach
                 </select>
@@ -85,12 +85,9 @@
             <label class="col-sm-4 col-form-label">*Kota / Kabupaten</label>
             <div class="col-sm-8">
               <div class="form-group">
-               <select name="edit_kota" id="edit_kota" class="form-control">
-               <option selected value=""></option>
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
+                <select name="kota" id="kota" class="form-control">
+                  <option value="0" selected>======PILIH KOTA/KABUPATEN======</option>
                 </select>
-               </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -99,12 +96,9 @@
             <label class="col-sm-4 col-form-label">*Kecamatan</label>
             <div class="col-sm-8">
               <div class="form-group">
-              <select name="edit_kecamatan" id="edit_kecamatan" class="form-control">
-              <option selected value=""></option>
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
+                <select name="kecamatan" id="kecamatan" class="form-control">
+                  <option value="0" selected>======PILIH KECAMATAN======</option>
                 </select>
-               </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -113,12 +107,9 @@
             <label class="col-sm-4 col-form-label">*Desa / Kelurahan</label>
             <div class="col-sm-8">
               <div class="form-group">
-              <select name="edit_kelurahan" id="edit_kelurahan" class="form-control">
-              <option selected value=""></option>
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
+                <select name="kelurahan" id="kelurahan" class="form-control">
+                  <option value="0" selected>======PILIH KELURAHAN/DESA======</option>
                 </select>
-               </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -127,7 +118,7 @@
             <label class="col-sm-4 col-form-label">*Alamat</label>
             <div class="col-sm-8">
               <div class="form-group">
-               <textarea name="alamat" id="alamat" cols="30" rows="10" class="form-control">{{ $member->alamat }}</textarea>
+                <textarea name="alamat" id="alamat" cols="30" rows="10" class="form-control">{{ $member->alamat }}</textarea>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -187,62 +178,3 @@
   </div>
 </div>
 @endforeach
-<!--  End Modal -->
-<script>
-  $(document).ready(function() {
-    $('#edit_in_provinsi').change( function() {
-        $.getJSON('/provinsi/kota/'+$('#edit_in_provinsi').val(), 
-        function(data){
-            $('#edit_kota').find('option').remove();
-            
-            $.each(data, function(title,arrayKota){
-                $.each(arrayKota, function(i,j){
-                  $( "#edit_kota" ).prop( "disabled", false )
-                    $('#edit_kota').append(new Option(j['nama'],j['id']))
-                });
-            })
-            
-        });
-        
-    });
-    $('#edit_kota').change( function() {
-        $.getJSON('/provinsi/kota/kecamatan/'+$('#edit_kota').val(), 
-        function(dataKec){
-            $('#edit_kecamatan').find('option').remove();
-            
-            $.each(dataKec, function(title,arrayKecamatan){
-                $.each(arrayKecamatan, function(k,c){
-                  $( "#edit_kecamatan" ).prop( "disabled", false )
-                    $('#edit_kecamatan').append(new Option(c['nama'],c['id']))
-                    
-                });
-            })
-            
-        });
-        
-    });
-    $('#edit_kecamatan').change( function() {
-        $.getJSON('/provinsi/kota/kecamatan/kelurahan/'+$('#edit_kecamatan').val(), 
-        function(dataKel){
-            $('#edit_kelurahan').find('option').remove();
-            
-            $.each(dataKel, function(title,arrayKelurahan){
-                $.each(arrayKelurahan, function(k,l){
-                  $( "#edit_kelurahan" ).prop( "disabled", false )
-                    $('#edit_kelurahan').append( new Option(l['nama'],l['id']))
-                });
-            })
-            
-        });
-        
-    });
-  });
-</script>
-
-<script>
-  function selectProv(){
-    document.getElementById("edit_kelurahan").disabled = true;
-    document.getElementById("edit_kecamatan").disabled = true;
-    document.getElementById("edit_kota").disabled = true;
-  }
-</script>
