@@ -65,15 +65,11 @@
             <label class="col-sm-4 col-form-label">*Provinsi</label>
             <div class="col-sm-8">
               <div class="form-group">
-                <select name="edit_in_provinsi" id="edit_in_provinsi" class="form-control" onclick="selectProv()">
+                <select name="edit_provinsi" id="edit_provinsi" class="form-control">
+                  <option value="0" selected>======PILIH PROVINSI======</option>
                   @foreach($provinsi as $gp)
                     @foreach($gp as $p)
-                      @if ($member->kategori->provinsi == $p['id'])
-                        <option id="optionProvinsi" value="{{ $p['id'] }}" selected>{{ $p['nama'] }}</option>
-                      @else
-                        <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option>
-                      @endif
-                      {{-- <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option> --}}
+                    <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option> 
                     @endforeach
                   @endforeach
                 </select>
@@ -86,9 +82,7 @@
             <div class="col-sm-8">
               <div class="form-group">
                <select name="edit_kota" id="edit_kota" class="form-control">
-               <option selected value=""></option>
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
+                  <option value="0" selected>======PILIH KOTA/KABUPATEN======</option>
                 </select>
                </select>
                 <span class="bmd-help">Harus diisi</span>
@@ -100,9 +94,7 @@
             <div class="col-sm-8">
               <div class="form-group">
               <select name="edit_kecamatan" id="edit_kecamatan" class="form-control">
-              <option selected value=""></option>
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
+                <option value="0" selected>======PILIH KECAMATAN======</option>
                 </select>
                </select>
                 <span class="bmd-help">Harus diisi</span>
@@ -114,9 +106,7 @@
             <div class="col-sm-8">
               <div class="form-group">
               <select name="edit_kelurahan" id="edit_kelurahan" class="form-control">
-              <option selected value=""></option>
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
+                <option value="0" selected>======PILIH KELURAHAN/DESA======</option>
                 </select>
                </select>
                 <span class="bmd-help">Harus diisi</span>
@@ -190,11 +180,16 @@
 <!--  End Modal -->
 <script>
   $(document).ready(function() {
-    $('#edit_in_provinsi').change( function() {
-        $.getJSON('/provinsi/kota/'+$('#edit_in_provinsi').val(), 
+    $('#edit_provinsi').change( function() {
+        EditProvFocused();
+        $.getJSON('/provinsi/kota/'+$('#edit_provinsi').val(), 
         function(data){
             $('#edit_kota').find('option').remove();
-            
+            $('#edit_kecamatan').find('option').remove();
+            $('#edit_kelurahan').find('option').remove();
+            $('#edit_kota').append(new Option('======PILIH KOTA/KABUPATEN======','0'));
+            $('#edit_kecamatan').append(new Option('======PILIH KECAMATAN======','0'));
+            $('#edit_kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
             $.each(data, function(title,arrayKota){
                 $.each(arrayKota, function(i,j){
                   $( "#edit_kota" ).prop( "disabled", false )
@@ -206,10 +201,13 @@
         
     });
     $('#edit_kota').change( function() {
+        EditKotaFocused();
         $.getJSON('/provinsi/kota/kecamatan/'+$('#edit_kota').val(), 
         function(dataKec){
             $('#edit_kecamatan').find('option').remove();
-            
+            $('#edit_kelurahan').find('option').remove();
+            $('#edit_kecamatan').append(new Option('======PILIH KECAMATAN======','0'));
+            $('#edit_kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
             $.each(dataKec, function(title,arrayKecamatan){
                 $.each(arrayKecamatan, function(k,c){
                   $( "#edit_kecamatan" ).prop( "disabled", false )
@@ -225,7 +223,7 @@
         $.getJSON('/provinsi/kota/kecamatan/kelurahan/'+$('#edit_kecamatan').val(), 
         function(dataKel){
             $('#edit_kelurahan').find('option').remove();
-            
+            $('#edit_kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
             $.each(dataKel, function(title,arrayKelurahan){
                 $.each(arrayKelurahan, function(k,l){
                   $( "#edit_kelurahan" ).prop( "disabled", false )
@@ -240,9 +238,16 @@
 </script>
 
 <script>
-  function selectProv(){
+  function EditProvFocused(){
     document.getElementById("edit_kelurahan").disabled = true;
     document.getElementById("edit_kecamatan").disabled = true;
     document.getElementById("edit_kota").disabled = true;
+  }
+  function EditKotaFocused(){
+    document.getElementById("edit_kelurahan").disabled = true;
+    document.getElementById("edit_kecamatan").disabled = true;
+  }
+  function EditKecamatanFocused(){
+    document.getElementById("edit_kelurahan").disabled = true;
   }
 </script>
