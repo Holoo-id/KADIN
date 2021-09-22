@@ -34,14 +34,14 @@ class DataAnggotaController extends Controller
         $responseKelurahan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kelurahan/'.$request->kelurahan)->json();
         $provinsi = $responseProvinsi['nama'];
         $kota = $responseKota['nama'];
-        
-        dd($kota);
+        $kecamatan = $responseKecamatan['nama'];
+        $kelurahan = $responseKelurahan['nama'];
 
         $tambahDetailAlamat = Alamat::create([
             'lokasi' => $request->lokasi,
-            'kelurahan_desa' => $request->kelurahan,
-            'kecamatan' => $request->kecamatan,
-            'kabupaten_kota' => $request->kota,
+            'kelurahan_desa' => $kelurahan,
+            'kecamatan' => $kecamatan,
+            'kabupaten_kota' => $kota,
             'provinsi' => $provinsi,
         ]);
         

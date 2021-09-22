@@ -84,7 +84,6 @@
                <select name="edit_kota" id="edit_kota" class="form-control">
                   <option value="0" selected>======PILIH KOTA/KABUPATEN======</option>
                 </select>
-               </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -96,7 +95,6 @@
               <select name="edit_kecamatan" id="edit_kecamatan" class="form-control">
                 <option value="0" selected>======PILIH KECAMATAN======</option>
                 </select>
-               </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -108,7 +106,6 @@
               <select name="edit_kelurahan" id="edit_kelurahan" class="form-control">
                 <option value="0" selected>======PILIH KELURAHAN/DESA======</option>
                 </select>
-               </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
@@ -117,7 +114,7 @@
             <label class="col-sm-4 col-form-label">*Alamat</label>
             <div class="col-sm-8">
               <div class="form-group">
-               <textarea name="alamat" id="alamat" cols="30" rows="10" class="form-control">{{ $member->alamat }}</textarea>
+                <textarea name="alamat" id="alamat" cols="30" rows="10" class="form-control">{{ $member->alamat }}</textarea>
                 <span class="bmd-help">Harus diisi</span>
               </div>
             </div>
