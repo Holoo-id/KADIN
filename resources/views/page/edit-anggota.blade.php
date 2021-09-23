@@ -67,11 +67,15 @@
               <div class="form-group">
                 <select name="edit_in_provinsi" id="edit_in_provinsi" class="form-control" onclick="selectProv()">
                    <option value="0" selected>======PILIH PROVINSI======</option>
-                  @foreach($provinsi as $gp)
-                    @foreach($gp as $p)
-                    <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option> 
-                    @endforeach
-                  @endforeach
+                   @if ($provinsi === null)
+                      <option id="optionProvinsi" value="">Tidak Ada Data</option>
+                    @else
+                      @foreach($provinsi as $gp)
+                        @foreach($gp as $p)
+                          <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option>
+                        @endforeach
+                      @endforeach
+                    @endif
                 </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
