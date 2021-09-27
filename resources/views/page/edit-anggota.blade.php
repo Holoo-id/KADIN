@@ -66,12 +66,12 @@
             <div class="col-sm-8">
               <div class="form-group">
                 <select name="edit_in_provinsi" id="edit_in_provinsi" class="form-control" onclick="selectProv()">
-                   <option value="0" selected>======PILIH PROVINSI======</option>
-                  @foreach($provinsi as $gp)
-                    @foreach($gp as $p)
-                    <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option> 
-                    @endforeach
+                  <option value="0" selected>======PILIH PROVINSI======</option>
+                  @if($apiused == "EMSIFA")
+                  @foreach($provinsi as $p)
+                    <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['name'] }}</option> 
                   @endforeach
+                  @endif
                 </select>
                 <span class="bmd-help">Harus diisi</span>
               </div>
@@ -190,16 +190,15 @@
         $.getJSON('/provinsi/kota/'+$('#edit_in_provinsi').val(), 
         function(data){
             $('#edit_kota').find('option').remove();
-            $.each(data, function(title,arrayKota){
-                $.each(arrayKota, function(i,j){
+            
+                $.each(data, function(i,j){
                   $( "#edit_kota" ).prop( "disabled", false )
-                    $('#edit_kota').append(new Option(j['nama'],j['id']))
+                    $('#edit_kota').append(new Option(j['name'],j['id']))
                     $('#edit_kecamatan').find('option').remove();
                     $('#edit_kelurahan').find('option').remove();
                     $('#edit_kecamatan').append(new Option('======PILIH KECAMATAN======','0'));
                     $('#edit_kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
                 });
-            })
             
         });
         
@@ -208,16 +207,14 @@
         $.getJSON('/provinsi/kota/kecamatan/'+$('#edit_kota').val(), 
         function(dataKec){
             $('#edit_kecamatan').find('option').remove();
-            
-            $.each(dataKec, function(title,arrayKecamatan){
-                $.each(arrayKecamatan, function(k,c){
+
+                $.each(dataKec, function(k,c){
                   $( "#edit_kecamatan" ).prop( "disabled", false )
-                    $('#edit_kecamatan').append(new Option(c['nama'],c['id']))
+                    $('#edit_kecamatan').append(new Option(c['name'],c['id']))
                     $('#edit_kelurahan').find('option').remove();
                     $('#edit_kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
                     
                 });
-            })
             
         });
         
@@ -226,13 +223,11 @@
         $.getJSON('/provinsi/kota/kecamatan/kelurahan/'+$('#edit_kecamatan').val(), 
         function(dataKel){
             $('#edit_kelurahan').find('option').remove();
-            
-            $.each(dataKel, function(title,arrayKelurahan){
-                $.each(arrayKelurahan, function(k,l){
+
+                $.each(dataKel, function(k,l){
                   $( "#edit_kelurahan" ).prop( "disabled", false )
-                    $('#edit_kelurahan').append( new Option(l['nama'],l['id']))
+                    $('#edit_kelurahan').append( new Option(l['name'],l['id']))
                 });
-            })
             
         });
         

@@ -64,11 +64,11 @@
               <div class="form-group">
                 <select name="provinsi" id="provinsi" class="form-control">
                   <option value="0" selected>======PILIH PROVINSI======</option>
-                  @foreach($provinsi as $gp)
-                    @foreach($gp as $p)
-                      <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['nama'] }}</option>
-                    @endforeach
+                  @if($apiused == "EMSIFA")
+                  @foreach($provinsi as $p)
+                      <option id="optionProvinsi" value="{{ $p['id'] }}">{{ $p['name'] }}</option>
                   @endforeach
+                  @endif
                 </select>
                 <span class="bmd-help">Harus diisi</span>
                 <input type="hidden" name="in_provinsi" value="0">

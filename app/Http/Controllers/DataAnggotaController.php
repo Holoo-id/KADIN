@@ -14,28 +14,67 @@ class DataAnggotaController extends Controller
 {
     public function index(Request $request)
     {
-        $response = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi');
-       
+        //API by EMSIFA
+        $response = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
+        $apiused = "EMSIFA";
         $provinsi = $response->json();
-       
+        
+        //if API EMSIFA errror, use FARIZDOT
+        if($response->status()!=200){
+            
+            $response2 = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi');
+            
+            //both API failed
+            if ($response2->status()!=200) {
+                $apiused = "NONE";
+            }
+            
+            $apiused = "FARIZDOT";
+            $response = $response2->json();
+            $provinsi = $response['provinsi'];
+        }
+
+        
         $inProvinsi = $request->session()->get('inProvinsi');
 
         $members = Anggota::orderBy('created_at', 'desc')
         ->get();
         $pageName = 'Data Anggota';
-        return view('page.data-anggota', compact('members', 'pageName','provinsi','inProvinsi'));
+        return view('page.data-anggota', compact('apiused','members', 'pageName','provinsi','inProvinsi'));
     }
     
     public function create(Request $request)
     {
-        $responseProvinsi = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->provinsi)->json();
-        $responseKota = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kota/'.$request->kota)->json();
-        $responseKecamatan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kecamatan/'.$request->kecamatan)->json();
-        $responseKelurahan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kelurahan/'.$request->kelurahan)->json();
-        $provinsi = $responseProvinsi['nama'];
-        $kota = $responseKota['nama'];
-        $kecamatan = $responseKecamatan['nama'];
-        $kelurahan = $responseKelurahan['nama'];
+        $response = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
+
+        if($response->status()==200){
+            $responseProvinsi = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/province/'.$request->provinsi.'.json')->json();
+            $responseKota = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/regency/'.$request->kota.'.json')->json();
+            $responseKecamatan = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/district/'.$request->kecamatan.'.json')->json();
+            $responseKelurahan = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/village/'.$request->kelurahan.'.json')->json();
+            $provinsi = $responseProvinsi['name'];
+            $kota = $responseKota['name'];
+            $kecamatan = $responseKecamatan['name'];
+            $kelurahan = $responseKelurahan['name'];
+        }
+        else{
+            
+            $response2 = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi');
+            
+            if ($response2->status()==200) {
+                $responseProvinsi = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->provinsi)->json();
+                $responseKota = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kota/'.$request->kota)->json();
+                $responseKecamatan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kecamatan/'.$request->kecamatan)->json();
+                $responseKelurahan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kelurahan/'.$request->kelurahan)->json();
+                $provinsi = $responseProvinsi['nama'];
+                $kota = $responseKota['nama'];
+                $kecamatan = $responseKecamatan['nama'];
+                $kelurahan = $responseKelurahan['nama'];
+            }
+            else{
+                return "Data API Sedang Error !";
+            }
+        }
 
         $tambahDetailAlamat = Alamat::create([
             'lokasi' => $request->lokasi,
@@ -63,17 +102,38 @@ class DataAnggotaController extends Controller
     
     public function update(Request $request)
     {
-        $responseProvinsi = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->edit_provinsi)->json();
-        $responseKota = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kota/'.$request->edit_kota)->json();
-        $responseKecamatan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kecamatan/'.$request->edit_kecamatan)->json();
-        $responseKelurahan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kelurahan/'.$request->edit_kelurahan)->json();
-        $provinsi = $responseProvinsi['nama'];
-        $kota = $responseKota['nama'];
-        $kecamatan = $responseKecamatan['nama'];
-        $kelurahan = $responseKelurahan['nama'];
+        $response = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
 
-        dd($provinsi + $kota + $kecamatan + $kelurahan);
+        if($response->status()==200){
+            $responseProvinsi = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/province/'.$request->provinsi.'.json')->json();
+            $responseKota = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/regency/'.$request->kota.'.json')->json();
+            $responseKecamatan = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/district/'.$request->kecamatan.'.json')->json();
+            $responseKelurahan = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/village/'.$request->kelurahan.'.json')->json();
+            $provinsi = $responseProvinsi['name'];
+            $kota = $responseKota['name'];
+            $kecamatan = $responseKecamatan['name'];
+            $kelurahan = $responseKelurahan['name'];
+        }
 
+        else{
+
+            $response2 = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi');
+            
+            if ($response2->status()==200) {
+                $responseProvinsi = Http::get('https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->provinsi)->json();
+                $responseKota = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kota/'.$request->kota)->json();
+                $responseKecamatan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kecamatan/'.$request->kecamatan)->json();
+                $responseKelurahan = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kelurahan/'.$request->kelurahan)->json();
+                $provinsi = $responseProvinsi['nama'];
+                $kota = $responseKota['nama'];
+                $kecamatan = $responseKecamatan['nama'];
+                $kelurahan = $responseKelurahan['nama'];
+            }
+            else{
+                return "Data API Sedang Error !";
+            }
+        }
+        
         $editDataAnggota = Anggota::where('id',$request->id)->update([
             'Nama' => $request->nama,
             'NIK' => $request->nik,
@@ -109,20 +169,20 @@ class DataAnggotaController extends Controller
     
     }
     public function kota(Request $request, $id){
-        $responseKota = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi='.$id);
-        $kota = $responseKota->json();
+        $response = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/regencies/'.$id.'.json');
+        $kota = $response->json();
 
         return $kota;
     }
     public function kecamatan(Request $request, $id){
-        $response = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota='.$id);
+        $response = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/districts/'.$id.'.json');
         $kecamatan = $response->json();
 
         return $kecamatan;
     }
     public function kelurahan(Request $request, $id){
        
-        $response = Http::get('https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan='.$id);
+        $response = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/villages/'.$id.'.json');
         $kelurahan = $response->json();
 
         return $kelurahan;

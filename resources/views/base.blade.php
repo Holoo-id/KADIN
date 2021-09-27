@@ -378,13 +378,10 @@
                 $('#kota').append(new Option('======PILIH KOTA/KABUPATEN======','0'));
                 $('#kecamatan').append(new Option('======PILIH KECAMATAN======','0'));
                 $('#kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
-                $.each(data, function(title,arrayKota){
-                    $.each(arrayKota, function(i,j){
+                    $.each(data, function(i,j){
                       $( "#kota" ).prop( "disabled", false )
-                        $('#kota').append(new Option(j['nama'],j['id']))
+                        $('#kota').append(new Option(j['name'],j['id']))
                     });
-                })
-                
             });
             
         });
@@ -396,13 +393,12 @@
                 $('#kelurahan').find('option').remove();
                 $('#kecamatan').append(new Option('======PILIH KECAMATAN======','0'));
                 $('#kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
-                $.each(dataKec, function(title,arrayKecamatan){
-                    $.each(arrayKecamatan, function(k,c){
+                
+                    $.each(dataKec, function(k,c){
                       $( "#kecamatan" ).prop( "disabled", false )
-                        $('#kecamatan').append(new Option(c['nama'],c['id']))
+                        $('#kecamatan').append(new Option(c['name'],c['id']))
                         
                     });
-                })
                 
             });
             
@@ -413,12 +409,11 @@
             function(dataKel){
                 $('#kelurahan').find('option').remove();
                 $('#kelurahan').append(new Option('======PILIH KELURAHAN/DESA======','0'));
-                $.each(dataKel, function(title,arrayKelurahan){
-                    $.each(arrayKelurahan, function(k,l){
+                
+                    $.each(dataKel, function(k,l){
                       $( "#kelurahan" ).prop( "disabled", false )
-                        $('#kelurahan').append( new Option(l['nama'],l['id']))
+                        $('#kelurahan').append( new Option(l['name'],l['id']))
                     });
-                })
                 
             });
             
