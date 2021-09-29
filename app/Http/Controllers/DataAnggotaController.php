@@ -60,6 +60,13 @@ class DataAnggotaController extends Controller
         
         return redirect('/data-anggota');
     }
+
+    public function show($id)
+    {
+        $pageName = 'Detail';
+        $member = Anggota::where('id', $id)->first();
+        return view('page.detail-anggota', compact('member', 'pageName'));
+    }
     
     public function update(Request $request)
     {
