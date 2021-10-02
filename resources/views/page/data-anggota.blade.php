@@ -90,6 +90,9 @@
                       <a href="{{ $member->kategori->lokasi }}" target="_blank" class="btn btn-link btn-info btn-just-icon">
                         <i class="material-icons">location_on</i>
                       </a>
+                      <a href="{{ route('detail-anggota', $member->id) }}" class="btn btn-link btn-primary btn-just-icon">
+                        <i class="material-icons">pageview</i>
+                      </a>
                       <button class="btn btn-link btn-success btn-just-icon edit" data-toggle="modal" data-target="#modalEdit{{ $member->id }}">
                         <i class="material-icons">mode_edit</i>
                       </button>
