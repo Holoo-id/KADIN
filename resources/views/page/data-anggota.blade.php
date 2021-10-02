@@ -28,6 +28,16 @@
                     <a class="dropdown-item" href="{{ route('anggota-pdf') }}">Cetak Berdasarkan Kota</a>
                   </div>
                 </div>
+                {{-- <div class="dropdown">
+                  <a class="btn btn-success" href="javascript:;" id="printAsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Cetak Sebagai EXCEL
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="printAsDropdown">
+                    <a class="dropdown-item" href="{{ route('anggota-excel') }}">Cetak Semua</a>
+                    <a class="dropdown-item" href="{{ route('anggota-excel') }}">Cetak Berdasarkan Jenis Usaha</a>
+                    <a class="dropdown-item" href="{{ route('anggota-excel') }}">Cetak Berdasarkan Kota</a>
+                  </div>
+                </div> --}}
                 <a href="{{ route('anggota-excel') }}" class="btn btn-success">Cetak Sebagai EXCEL</a>
               </div>
             </div>
