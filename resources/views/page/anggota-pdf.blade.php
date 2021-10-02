@@ -11,9 +11,14 @@
 			font-family: 'Montserrat', sans-serif;
 			font-size: .9375rem;
 		}
+		h1 {
+			font-size: 2.5rem;
+			text-align: center;
+			font-weight: bold;
+		}
 		table {
 			width: 100%;
-			margin: 25% auto 0;
+			margin: 12.5% auto 0;
 			table-layout: auto;
 			border-spacing: 0;
 		}
@@ -34,6 +39,7 @@
 		}
 	</style>
 	<body>
+		<h1>KADIN - Data Anggota</h1>
 		<table>
 			<thead>
 					<tr>

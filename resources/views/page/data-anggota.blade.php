@@ -24,8 +24,14 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="printAsDropdown">
                     <a class="dropdown-item" href="{{ route('anggota-pdf') }}">Cetak Semua</a>
-                    <a class="dropdown-item" href="{{ route('anggota-pdf') }}">Cetak Berdasarkan Jenis Usaha</a>
-                    <a class="dropdown-item" href="{{ route('anggota-pdf') }}">Cetak Berdasarkan Kota</a>
+                    <button class="dropdown-item" data-toggle="modal" data-target="#printByBuss" style="width: 94%">
+                      Cetak Berdasarkan Jenis Usaha
+                    </button>
+                    <button class="dropdown-item" data-toggle="modal" data-target="#printByCity" style="width: 94%">
+                      Cetak Berdasarkan Kota
+                    </button>
+                    {{-- <a class="dropdown-item" href="{{ route('anggota-pdf') }}">Cetak Berdasarkan Jenis Usaha</a>
+                    <a class="dropdown-item" href="{{ route('anggota-pdf') }}">Cetak Berdasarkan Kota</a> --}}
                   </div>
                 </div>
                 {{-- <div class="dropdown">
@@ -57,8 +63,6 @@
                   <th>Kabupaten/Kota</th>
                   <th>Kecamatan</th>
                   <th>Kelurahan</th>
-                  {{-- <th>Titik Kordinat</th> --}}
-                  {{-- <th>Jumlah Karyawan</th> --}}
                   <th class="disabled-sorting text-right"></th>
                 </tr>
               </thead>
@@ -74,8 +78,6 @@
                   <th>Kabupaten/Kota</th>
                   <th>Kecamatan</th>
                   <th>Kelurahan</th>
-                  {{-- <th>Titik Kordinat</th> --}}
-                  {{-- <th>Jumlah Karyawan</th> --}}
                   <th class="text-right"></th>
                 </tr>
               </tfoot>
@@ -89,22 +91,11 @@
                     <td>{{ \Carbon\Carbon::now()->year - \Carbon\Carbon::parse($member->tgl_lahir)->format('Y') }}</td>
                     <td>{{ $member->produk }}</td>
                     <td>
-                      {{-- @foreach ($provinsi as $prov)
-                        @foreach ($prov as $p)
-                          @if ($member->kategori->provinsi == $p['id'])
-                            {{$p['nama']}}
-                          @else
-                            {{''}}
-                          @endif
-                        @endforeach
-                      @endforeach --}}
                       {{$member->kategori->provinsi}}
                     </td>
                     <td>{{ $member->kategori->kabupaten_kota }}</td>
                     <td>{{ $member->kategori->kecamatan }}</td>
                     <td>{{ $member->kategori->kelurahan_desa }}</td>
-                    {{-- <td>{{ $member->kategori->lattitude }},{{ $member->kategori->longitude }}</td> --}}
-                    {{-- <td>{{ $member->jumlah_karyawan }}</td> --}}
                     <td class="text-right">
                       <a href="{{ $member->kategori->lokasi }}" target="_blank" class="btn btn-link btn-info btn-just-icon">
                         <i class="material-icons">location_on</i>
@@ -132,7 +123,81 @@
     <!-- end col-md-12 -->
   </div>
   <!-- end row -->
-    @include('page.tambah-anggota')
-    @include('page.edit-anggota')
-    @include('page.hapus-anggota')
+  <!-- Modal Pilih Kota (Print) -->
+  <div class="modal fade" id="printByCity" tabindex="-1" role="dialog" aria-labelledby="cityPrint" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Print berdasarkan kota</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="material-icons">clear</i>
+          </button>
+        </div>
+        {{-- <form method="post" action="{{ route('post-data-anggota') }}" class="form-horizontal"> --}}
+        <form method="post" action="#" class="form-horizontal">
+          @csrf
+          <div class="modal-body">
+            <div class="row">
+              <label class="col-sm-4 col-form-label">Kota / Kabupaten</label>
+              <div class="col-sm-8">
+                <div class="form-group">
+                  <select name="kota" id="kota" class="form-control">
+                    <option value="Bandung" selected>Bandung</option>
+                    <option value="Cimahi">Cimahi</option>
+                  </select>
+                  <span class="bmd-help">Harus diisi</span>
+                  <input type="hidden" name="in_kota" value="0">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-success btn-link">
+            <input type="reset" class="btn btn-danger btn-link">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Pilih Usaha (Print) -->
+  <div class="modal fade" id="printByBuss" tabindex="-1" role="dialog" aria-labelledby="printBuss" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Print berdasarkan usaha</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="material-icons">clear</i>
+          </button>
+        </div>
+        {{-- <form method="post" action="{{ route('post-data-anggota') }}" class="form-horizontal"> --}}
+        <form method="post" action="#" class="form-horizontal">
+          @csrf
+          <div class="modal-body">
+            <div class="row">
+              <label class="col-sm-4 col-form-label">Usaha</label>
+              <div class="col-sm-8">
+                <div class="form-group">
+                  {{-- <select name="kota" id="kota" class="form-control">
+                    <option value="Bandung" selected>Bandung</option>
+                    <option value="Cimahi">Cimahi</option>
+                  </select> --}}
+                  <input type="text" name="usaha" id="usaha" class="form-control">
+                  <span class="bmd-help">Harus diisi</span>
+                  {{-- <input type="hidden" name="in_kota" value="0"> --}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-success btn-link">
+            <input type="reset" class="btn btn-danger btn-link">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  @include('page.tambah-anggota')
+  @include('page.edit-anggota')
+  @include('page.hapus-anggota')
 @endsection
