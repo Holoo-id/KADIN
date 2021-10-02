@@ -17,7 +17,7 @@ class AnggotaSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i < 21; $i++) { 
+        for ($i=1; $i < 11; $i++) { 
             DB::table('tb_anggota')->insert([
                 'NIK' => mt_rand(1000000000000000,9999999999999999),
                 'Nama' => Str::random(10),
@@ -33,6 +33,40 @@ class AnggotaSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ]);
         }
+        for ($i=11; $i < 16; $i++) { 
+            DB::table('tb_anggota')->insert([
+                'NIK' => mt_rand(1000000000000000,9999999999999999),
+                'Nama' => Str::random(10),
+                'tgl_lahir' => Carbon::now(),
+                'no_HP' => mt_rand(100000000000000,999999999999999),
+                'no_WA' => mt_rand(100000000000000,999999999999999),
+                'alamat' => Str::random(10),
+                'id_alamat' => $i,
+                'jenis_usaha' => 'Reseller',
+                'produk' => Str::random(10),
+                'jumlah_karyawan' => mt_rand(1,100),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+        }
+        for ($i=16; $i < 21; $i++) { 
+            DB::table('tb_anggota')->insert([
+                'NIK' => mt_rand(1000000000000000,9999999999999999),
+                'Nama' => Str::random(10),
+                'tgl_lahir' => Carbon::now(),
+                'no_HP' => mt_rand(100000000000000,999999999999999),
+                'no_WA' => mt_rand(100000000000000,999999999999999),
+                'alamat' => Str::random(10),
+                'id_alamat' => $i,
+                'jenis_usaha' => 'Franchise',
+                'produk' => Str::random(10),
+                'jumlah_karyawan' => mt_rand(1,100),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        
 
     }
 }
