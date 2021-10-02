@@ -18,7 +18,16 @@
                 </button>
               </div>
               <div class="col d-flex justify-content-end">
-                <a href="{{ route('anggota-pdf') }}" class="btn btn-danger">Cetak Sebagai PDF</a>
+                <div class="dropdown">
+                  <a class="btn btn-danger" href="javascript:;" id="printAsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Cetak Sebagai PDF
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="printAsDropdown">
+                    <a class="dropdown-item" href="{{ route('anggota-pdf') }}">Cetak Semua</a>
+                    <a class="dropdown-item" href="{{ route('anggota-pdf') }}">Cetak Berdasarkan Jenis Usaha</a>
+                    <a class="dropdown-item" href="{{ route('anggota-pdf') }}">Cetak Berdasarkan Kota</a>
+                  </div>
+                </div>
                 <a href="{{ route('anggota-excel') }}" class="btn btn-success">Cetak Sebagai EXCEL</a>
               </div>
             </div>
@@ -30,16 +39,16 @@
                 <tr>
                   <th>Nama</th>
                   <th>NIK</th>
+                  <th>Nama Usaha</th>
                   <th>No. Telepon</th>
-                  <th>Usia</th>
+                  <th>Email</th>
+                  <th>Asosiasi </th>
                   <th>Provinsi</th>
                   <th>Kabupaten/Kota</th>
                   <th>Kecamatan</th>
                   <th>Kelurahan</th>
                   {{-- <th>Titik Kordinat</th> --}}
-                  <th>Jenis Usaha</th>
-                  <th>Produk</th>
-                  <th>Jumlah Karyawan</th>
+                  {{-- <th>Jumlah Karyawan</th> --}}
                   <th class="disabled-sorting text-right"></th>
                 </tr>
               </thead>
@@ -47,16 +56,16 @@
                 <tr>
                   <th>Nama</th>
                   <th>NIK</th>
+                  <th>Nama Usaha</th>
                   <th>No. Telepon</th>
-                  <th>Usia</th>
+                  <th>Email</th>
+                  <th>Asosiasi </th>
                   <th>Provinsi</th>
                   <th>Kabupaten/Kota</th>
                   <th>Kecamatan</th>
                   <th>Kelurahan</th>
                   {{-- <th>Titik Kordinat</th> --}}
-                  <th>Jenis Usaha</th>
-                  <th>Produk</th>
-                  <th>Jumlah Karyawan</th>
+                  {{-- <th>Jumlah Karyawan</th> --}}
                   <th class="text-right"></th>
                 </tr>
               </tfoot>
@@ -65,8 +74,10 @@
                   <tr>
                     <td>{{ $member->Nama }}</td>
                     <td>{{ $member->NIK }}</td>
+                    <td>{{ $member->jenis_usaha }}</td>
                     <td>{{ $member->no_HP }}</td>
                     <td>{{ \Carbon\Carbon::now()->year - \Carbon\Carbon::parse($member->tgl_lahir)->format('Y') }}</td>
+                    <td>{{ $member->produk }}</td>
                     <td>
                       {{-- @foreach ($provinsi as $prov)
                         @foreach ($prov as $p)
@@ -83,9 +94,7 @@
                     <td>{{ $member->kategori->kecamatan }}</td>
                     <td>{{ $member->kategori->kelurahan_desa }}</td>
                     {{-- <td>{{ $member->kategori->lattitude }},{{ $member->kategori->longitude }}</td> --}}
-                    <td>{{ $member->jenis_usaha }}</td>
-                    <td>{{ $member->produk }}</td>
-                    <td>{{ $member->jumlah_karyawan }}</td>
+                    {{-- <td>{{ $member->jumlah_karyawan }}</td> --}}
                     <td class="text-right">
                       <a href="{{ $member->kategori->lokasi }}" target="_blank" class="btn btn-link btn-info btn-just-icon">
                         <i class="material-icons">location_on</i>
